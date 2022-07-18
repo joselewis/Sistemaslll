@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tienda", "Tienda\Tienda.csproj", "{3B485CC8-8139-4723-9D8D-397B22A22B8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaDatos", "CapaDatos\CapaDatos.csproj", "{115997DB-F9EB-4477-87F8-57D56682A1A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3B485CC8-8139-4723-9D8D-397B22A22B8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B485CC8-8139-4723-9D8D-397B22A22B8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B485CC8-8139-4723-9D8D-397B22A22B8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B485CC8-8139-4723-9D8D-397B22A22B8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{115997DB-F9EB-4477-87F8-57D56682A1A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{115997DB-F9EB-4477-87F8-57D56682A1A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{115997DB-F9EB-4477-87F8-57D56682A1A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{115997DB-F9EB-4477-87F8-57D56682A1A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7B5FD30F-25AE-476A-82A7-67A6EA3B3321}
+	EndGlobalSection
+EndGlobal
