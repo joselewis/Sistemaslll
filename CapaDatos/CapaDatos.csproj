@@ -85,6 +85,9 @@
     <Compile Include="USUARIO.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
+    <Compile Include="USUARIO_ROL.cs">
+      <DependentUpon>ModeloTienda.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ModeloTienda.edmx">

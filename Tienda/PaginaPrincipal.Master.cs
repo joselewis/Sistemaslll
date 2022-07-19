@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using CapaDatos;
 
 namespace Tienda
 {
@@ -15,7 +16,7 @@ namespace Tienda
         }
         protected void MenuPrincipal()
         {
-            String Rol = Session["Tipo"].ToString();
+            String Rol = Session["TIPO_USUARIO"].ToString();
             String PaginaInicio = "";
             String LinksMenuPrincipal = "";
 

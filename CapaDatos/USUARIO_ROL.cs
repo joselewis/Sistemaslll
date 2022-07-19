@@ -12,16 +12,13 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class ADMINISTRADORE
+    public partial class USUARIO_ROL
     {
-        public int ID_USUARIO_ADMIN { get; set; }
-        public string CORREO_ELECTRONICO_ADMIN { get; set; }
-        public string NOMBRE_USUARIO_ADMIN { get; set; }
-        public string NOMBRE_ADMIN { get; set; }
-        public string APELLIDO_1_ADMIN { get; set; }
-        public string APELLIDO_2_ADMIN { get; set; }
-        public string TELEFONO_ADMIN { get; set; }
-        public string CONTRASENNA_ADMIN { get; set; }
-        public string TIPO_USUARIO { get; set; }
+        public int ID_ROL_USUARIO { get; set; }
+        public string ROL_USUARIO { get; set; }
+        public bool ESTADO_ROL { get; set; }
+        public string CORREO_ELECTRONICO { get; set; }
+    
+        public virtual USUARIO USUARIO { get; set; }
     }
 }

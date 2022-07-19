@@ -27,7 +27,7 @@ namespace Tienda
                     {
                         if(usuario.NOMBRE_USUARIO == CajaUsuario.Text && usuario.CONTRASENNA == CajaContrasenna.Text)
                         {
-                            Page.Session["Tipo"] = usuario.TIPO_USUARIO;
+                            Page.Session["TIPO_USUARIO"] = usuario.TIPO_USUARIO;
                             credenciales = 1;
                         }
                     }
@@ -49,7 +49,7 @@ namespace Tienda
                     {
                         if (administrador.NOMBRE_USUARIO_ADMIN == CajaUsuario.Text && administrador.CONTRASENNA_ADMIN == CajaContrasenna.Text)
                         {
-                            Page.Session["Tipo"] = administrador.TIPO_USUARIO_ADMIN;
+                            Page.Session["TIPO_USUARIO"] = administrador.TIPO_USUARIO;
                             credenciales = 1;
                         }
                     }
@@ -65,7 +65,7 @@ namespace Tienda
         {
             if (credenciales == 1)
             {
-                var Rol = Session["Tipo"].ToString();
+                var Rol = Session["TIPO_USUARIO_ADMIN"].ToString();
 
                 switch (Rol)
                 {
@@ -89,7 +89,6 @@ namespace Tienda
             IngresarNormal();
             IngresarAdministrador();
             Validacion();
-
         }
     }
 }
