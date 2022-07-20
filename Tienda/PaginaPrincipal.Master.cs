@@ -32,7 +32,6 @@ namespace Tienda
                                           "</i>" +
                                           "</div>" +
                                           "<a class='nav - link' href ='Administrador.aspx'>Nuevo Administrador</a>" +
-                                          "<a class='nav - link' href ='Crud_Cartas.aspx'>Agregar cartas</a>" + "</a>" +
                                           "<a class='nav - link' href ='MantenimientoAdmin.aspx'>Mantenimiento Admins</a>" + "</a>";
                     break;
             }

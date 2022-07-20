@@ -65,7 +65,7 @@ namespace Tienda
         {
             if (credenciales == 1)
             {
-                var Rol = Session["TIPO_USUARIO_ADMIN"].ToString();
+                var Rol = Session["TIPO_USUARIO"].ToString();
 
                 switch (Rol)
                 {
