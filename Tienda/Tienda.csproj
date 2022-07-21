@@ -75,6 +75,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="ImgMantenimiento\cancel2.png" />
+    <Content Include="ImgMantenimiento\delete2.png" />
+    <Content Include="ImgMantenimiento\editar.png" />
+    <Content Include="ImgMantenimiento\guardar.png" />
+    <Content Include="ImgMantenimiento\nuevo.png" />
     <Content Include="Login.aspx" />
     <Content Include="Login\css\bootstrap.min.css" />
     <Content Include="Login\css\bootstrap\mixins\_border-radius.css" />
@@ -91,6 +96,7 @@
     <Content Include="Login\js\jquery.min.js" />
     <Content Include="Login\js\main.js" />
     <Content Include="Login\js\popper.js" />
+    <Content Include="MantenimientoAdmin.aspx" />
     <Content Include="MasterPage\assets\demo\chart-area-demo.js" />
     <Content Include="MasterPage\assets\demo\chart-bar-demo.js" />
     <Content Include="MasterPage\assets\demo\chart-pie-demo.js" />
@@ -117,6 +123,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoAdmin.aspx.cs">
+      <DependentUpon>MantenimientoAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MantenimientoAdmin.aspx.designer.cs">
+      <DependentUpon>MantenimientoAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaginaPrincipal.aspx.cs">
       <DependentUpon>PaginaPrincipal.aspx</DependentUpon>

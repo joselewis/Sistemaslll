@@ -45,7 +45,7 @@ namespace Tienda
             {
                 try
                 {
-                    foreach (var administrador in ContextoDB.ADMINISTRADORES)
+                    foreach (var administrador in ContextoDB.ADMINISTRADORE)
                     {
                         if (administrador.NOMBRE_USUARIO_ADMIN == CajaUsuario.Text && administrador.CONTRASENNA_ADMIN == CajaContrasenna.Text)
                         {
