@@ -38,7 +38,7 @@
                 <label for="floatingPassword">Teléfono</label>
             </div>
             <div class="d-grid gap-2 col-6 mx-auto">
-                <asp:Button class="btn btn-primary" type="button" runat="server" id="Boton_Ingresar_Admin" OnClick="Boton_Ingresar_Admin_Click" Text="Ingresar administrador" ></asp:Button>
+                <asp:Button class="btn btn-primary" type="button" runat="server" id="Boton_Ingresar_Admin" OnClick="Boton_Ingresar_Admin_Click" Text="Ingresar a dministrador" ></asp:Button>
             </div>
        </div>
     <br />
