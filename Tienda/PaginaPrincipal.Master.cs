@@ -31,7 +31,7 @@ namespace Tienda
                                           "<i class='fas fa-tachometer - alt'>" +
                                           "</i>" +
                                           "</div>" +
-                                          "<a class='nav - link' href ='Administrador.aspx'>Nuevo Administrador</a>" +
+                                          "<a class='nav - link' href ='RegistrarAdministrador.aspx'>Nuevo Administrador</a>" +
                                           "<a class='nav - link' href ='MantenimientoAdmin.aspx'>Mantenimiento Admins</a>" + "</a>";
                     break;
             }

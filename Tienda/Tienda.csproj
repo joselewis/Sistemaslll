@@ -106,6 +106,7 @@
     <Content Include="MasterPage\js\datatables-simple-demo.js" />
     <Content Include="MasterPage\js\scripts.js" />
     <Content Include="PaginaPrincipal.aspx" />
+    <Content Include="RegistrarAdministrador.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="Registro\RegistroExitoso\Registro_Exitoso_Css.css" />
     <Content Include="Registro\Registro_Css.css" />
@@ -146,6 +147,13 @@
       <DependentUpon>PaginaPrincipal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrarAdministrador.aspx.cs">
+      <DependentUpon>RegistrarAdministrador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistrarAdministrador.aspx.designer.cs">
+      <DependentUpon>RegistrarAdministrador.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarUsuario.aspx.cs">
       <DependentUpon>RegistrarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
