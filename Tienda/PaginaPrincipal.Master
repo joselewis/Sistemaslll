@@ -24,6 +24,7 @@
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!--<asp:Label ID="txtNombreUsuarioSesion" Text="Sesion" runat="server" />-->
         <!-- Navbar Brand-->
         <a class="navbar-brand ps-3" href="PaginaPrincipal.aspx">Nombre Random</a>
         <!-- Sidebar Toggle-->
@@ -43,7 +44,7 @@
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
                     <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="Login.aspx">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -53,11 +54,13 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        
                         <a class="nav-link" href="PaginaPrincipal.aspx">
                             <div class="sb-nav-link-icon" ><i class="fas fa-tachometer-alt"></i></div>
                             Inicio
                         </a>
+<!--------------------------------------------------------------------PERFIL USUARIO------------------------------------------------------------------------->
+                        <!--<asp:Label ID="txtNombreAdminSesion" Text="" runat="server" />-->
+<!--------------------------------------------------------------------FIN PERFIL USUARIO------------------------------------------------------------------------->
                         <div class="sb-sidenav-menu-heading" ></div>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
@@ -128,7 +131,12 @@
                     <ol class="breadcrumb mb-4">
                         <!--<li class="breadcrumb-item active">Dashboard</li>-->
                     </ol>
-                    <div class="row">
+                    
+            <form id="form1" runat="server">
+                <div>
+                    <!----------------------------------------CONTENEDOR-------------------------------------------------------->
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            <div class="row">
                         <div class="col-xl-3 col-md-6">
                             <div class="card bg-primary text-white mb-4">
                                 <div class="card-body">Productos</div>
@@ -139,15 +147,11 @@
                             </div>
                         </div>
                     </div>
-            <form id="form1" runat="server">
-                <div>
-                    <!----------------------------------------CONTENEDOR-------------------------------------------------------->
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                            
                     </asp:ContentPlaceHolder>
                 </div>
-            </form>
+            
             <!----------------------------------------FIN CONTENEDOR-------------------------------------------------------->
+          </form>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">

@@ -27,7 +27,11 @@ namespace Tienda
                     {
                         if(usuario.NOMBRE_USUARIO == CajaUsuario.Text && usuario.CONTRASENNA == CajaContrasenna.Text)
                         {
+                            Page.Session["NOMBRE"] = usuario.NOMBRE + " " + usuario.APELLIDO_1_USUARIO + " " + usuario.APELLIDO_2_USUARIO;
+                            Page.Session["NOMBRE_USUARIO"] = usuario.NOMBRE_USUARIO;
                             Page.Session["TIPO_USUARIO"] = usuario.TIPO_USUARIO;
+                            Page.Session["CORREO_ELECTRONICO"] = usuario.CORREO_ELECTRONICO;
+                            Page.Session["TELEFONO_USUARIO"] = usuario.TELEFONO_USUARIO;
                             credenciales = 1;
                         }
                     }
@@ -49,7 +53,11 @@ namespace Tienda
                     {
                         if (administrador.NOMBRE_USUARIO_ADMIN == CajaUsuario.Text && administrador.CONTRASENNA_ADMIN == CajaContrasenna.Text)
                         {
+                            Page.Session["NOMBRE_ADMIN"] = administrador.NOMBRE_ADMIN + " " + administrador.APELLIDO_1_ADMIN + " " + administrador.APELLIDO_2_ADMIN;
+                            Page.Session["NOMBRE_USUARIO_ADMIN"] = administrador.NOMBRE_USUARIO_ADMIN;
                             Page.Session["TIPO_USUARIO"] = administrador.TIPO_USUARIO;
+                            Page.Session["CORREO_ELECTRONICO_ADMIN"] = administrador.CORREO_ELECTRONICO_ADMIN;
+                            Page.Session["TELEFONO_ADMIN"] = administrador.TELEFONO_ADMIN;
                             credenciales = 1;
                         }
                     }
