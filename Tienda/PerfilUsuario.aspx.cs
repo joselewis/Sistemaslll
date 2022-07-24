@@ -12,10 +12,10 @@ namespace Tienda
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Nombre.InnerHtml = "<h6>" + "Nombre: " + Session["NOMBRE"].ToString() + "</h6>";
-            NombreUsuario.InnerHtml = "<h6>" + "Nombre de usuario: " + Session["NOMBRE_USUARIO"].ToString() + "</h6>";
-            Correo.InnerHtml = "<h6>" + "Correo: " + Session["CORREO_ELECTRONICO"].ToString() + "</h6>";
-            Telefono.InnerHtml = "<h6>" + "Teléfono: " + Session["TELEFONO_USUARIO"].ToString() + "</h6>";
+            Nombre.InnerHtml = "<h6>" + Session["NOMBRE"].ToString() + "</h6>";
+            NombreUsuario.InnerHtml = "<h6>" + Session["NOMBRE_USUARIO"].ToString() + "</h6>";
+            Correo.InnerHtml = "<h6>" + Session["CORREO_ELECTRONICO"].ToString() + "</h6>";
+            Telefono.InnerHtml = "<h6>" + Session["TELEFONO_USUARIO"].ToString() + "</h6>";
         }
     }
 }

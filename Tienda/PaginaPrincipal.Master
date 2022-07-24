@@ -26,7 +26,7 @@
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!--<asp:Label ID="txtNombreUsuarioSesion" Text="Sesion" runat="server" />-->
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="PaginaPrincipal.aspx">Nombre Random</a>
+        <a class="navbar-brand ps-3" href="PaginaPrincipal.aspx">Tienda</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
@@ -134,23 +134,10 @@
                     
             <form id="form1" runat="server">
                 <div>
-                    <!----------------------------------------CONTENEDOR-------------------------------------------------------->
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                            <div class="row">
-                        <div class="col-xl-3 col-md-6">
-                            <div class="card bg-primary text-white mb-4">
-                                <div class="card-body">Productos</div>
-                                <div class="card-footer d-flex align-items-center justify-content-between">
-                                    <a class="small text-white stretched-link" href="Productos.aspx">Ver lista</a>
-                                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </asp:ContentPlaceHolder>
-                </div>
-            
-            <!----------------------------------------FIN CONTENEDOR-------------------------------------------------------->
+        <!----------------------------------------CONTENEDOR-------------------------------------------------------->
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <!----------------------------------------FIN CONTENEDOR-------------------------------------------------------->
           </form>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
