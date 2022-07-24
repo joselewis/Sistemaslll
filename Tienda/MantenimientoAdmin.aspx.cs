@@ -82,6 +82,7 @@ namespace Tienda
                 lblCamposNulos.Text = "Eliminado correctamente";
                 CargarAdministradores();
             }
+
         }
 
         protected void GridAdmin_RowCommand(object sender, GridViewCommandEventArgs e)

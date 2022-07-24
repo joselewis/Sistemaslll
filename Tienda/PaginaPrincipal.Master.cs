@@ -43,21 +43,56 @@ namespace Tienda
             {
                 case "Normal":
                     PaginaInicio = "/Usuario.aspx";
-                    LinksMenuPrincipal += "<div class='sb-nav-link-icon' >" +
-                                          "<i class='fas fa-tachometer - alt'>" +
+                    LinksMenuPrincipal += "<a class='nav-link' href='PerfilUsuario.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
                                           "</i>" +
                                           "</div>" +
-                                          "<a class='nav - link' href ='PerfilUsuario.aspx'>Perfil</a>" + "</a>";
+                                          "Perfil" +
+                                          "</a>";
                     break;
 
                 case "Administrador":
-                    LinksMenuPrincipal += "<div class='sb-nav-link-icon' >" +
-                                          "<i class='fas fa-tachometer - alt'>" +
+                    LinksMenuPrincipal += "<a class='nav-link' href='PerfilAdministrador.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
                                           "</i>" +
                                           "</div>" +
-                                          "<a class='nav - link' href ='PerfilAdministrador.aspx'>Perfil Administrador</a>" +
-                                          "<a class='nav - link' href ='RegistrarAdministrador.aspx'>Nuevo Administrador</a>" +
-                                          "<a class='nav - link' href ='MantenimientoAdmin.aspx'>Mantenimiento Admins</a>" + "</a>";
+                                          "Perfil admin" +
+                                          "</a>" +
+
+                                          "<a class='nav-link' href='RegistrarAdministrador.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
+                                          "</i>" +
+                                          "</div>" +
+                                          "Registrar admin" +
+                                          "</a>" +
+
+                                          "<a class='nav-link' href='MantenimientoAdmin.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
+                                          "</i>" +
+                                          "</div>" +
+                                          "Mantenimiento Admin" +
+                                          "</a>" +
+
+                                          "<a class='nav-link' href='MantenimientoProductos.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
+                                          "</i>" +
+                                          "</div>" +
+                                          "Mantenimiento Productos" +
+                                          "</a>" +
+
+                                          "<a class='nav-link' href='MantenimientoUsuarios.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
+                                          "</i>" +
+                                          "</div>" +
+                                          "Mantenimiento Usuarios" +
+                                          "</a>";
+
                     break;
             }
 

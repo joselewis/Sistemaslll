@@ -80,6 +80,8 @@
     <Content Include="ImgMantenimiento\editar.png" />
     <Content Include="ImgMantenimiento\guardar.png" />
     <Content Include="ImgMantenimiento\nuevo.png" />
+    <Content Include="ImgPerfiles\Gato.jpg" />
+    <Content Include="ImgProductos\Computadoras\6335589cv16d.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Login\css\bootstrap.min.css" />
     <Content Include="Login\css\bootstrap\mixins\_border-radius.css" />
@@ -97,6 +99,7 @@
     <Content Include="Login\js\main.js" />
     <Content Include="Login\js\popper.js" />
     <Content Include="MantenimientoAdmin.aspx" />
+    <Content Include="MantenimientoUsuarios.aspx" />
     <Content Include="MasterPage\assets\demo\chart-area-demo.js" />
     <Content Include="MasterPage\assets\demo\chart-bar-demo.js" />
     <Content Include="MasterPage\assets\demo\chart-pie-demo.js" />
@@ -108,6 +111,7 @@
     <Content Include="PaginaPrincipal.aspx" />
     <Content Include="PerfilAdministrador.aspx" />
     <Content Include="PerfilUsuario.aspx" />
+    <Content Include="Productos.aspx" />
     <Content Include="RegistrarAdministrador.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="Registro\RegistroExitoso\Registro_Exitoso_Css.css" />
@@ -133,6 +137,13 @@
     </Compile>
     <Compile Include="MantenimientoAdmin.aspx.designer.cs">
       <DependentUpon>MantenimientoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoUsuarios.aspx.cs">
+      <DependentUpon>MantenimientoUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MantenimientoUsuarios.aspx.designer.cs">
+      <DependentUpon>MantenimientoUsuarios.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaginaPrincipal.aspx.cs">
       <DependentUpon>PaginaPrincipal.aspx</DependentUpon>
@@ -161,6 +172,13 @@
     </Compile>
     <Compile Include="PerfilUsuario.aspx.designer.cs">
       <DependentUpon>PerfilUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Productos.aspx.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Productos.aspx.designer.cs">
+      <DependentUpon>Productos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistrarAdministrador.aspx.cs">
