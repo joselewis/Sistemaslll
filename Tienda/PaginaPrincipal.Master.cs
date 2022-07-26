@@ -49,7 +49,16 @@ namespace Tienda
                                           "</i>" +
                                           "</div>" +
                                           "Perfil" +
-                                          "</a>";
+                                          "</a>" +
+
+                                          "<a class='nav-link' href='CarritoCompras.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
+                                          "</i>" +
+                                          "</div>" +
+                                          "Carrito" +
+                                          "</a>"
+                                          ;
                     break;
 
                 case "Administrador":
@@ -67,6 +76,14 @@ namespace Tienda
                                           "</i>" +
                                           "</div>" +
                                           "Registrar admin" +
+                                          "</a>" +
+
+                                          "<a class='nav-link' href='RegistroProductos.aspx'>" +
+                                          "<div class='sb-nav-link-icon'>" +
+                                          "<i class='fas fa-chart-area'>" +
+                                          "</i>" +
+                                          "</div>" +
+                                          "Registrar productos" +
                                           "</a>" +
 
                                           "<a class='nav-link' href='MantenimientoAdmin.aspx'>" +

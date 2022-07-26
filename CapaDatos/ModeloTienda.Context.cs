@@ -25,12 +25,10 @@ namespace CapaDatos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<ADMINISTRADORE> ADMINISTRADORE { get; set; }
+        public virtual DbSet<ADMINISTRADORE> ADMINISTRADORES { get; set; }
         public virtual DbSet<METODO_PAGO> METODO_PAGO { get; set; }
-        public virtual DbSet<PRODUCTO> PRODUCTOS { get; set; }
-        public virtual DbSet<SUPERMERCADO> SUPERMERCADOes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<USUARIO_ROL> USUARIO_ROL { get; set; }
         public virtual DbSet<USUARIO> USUARIOS { get; set; }
+        public virtual DbSet<PRODUCTO> PRODUCTOS { get; set; }
     }
 }

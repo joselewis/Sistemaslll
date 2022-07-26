@@ -99,6 +99,7 @@
     <Content Include="Login\js\main.js" />
     <Content Include="Login\js\popper.js" />
     <Content Include="MantenimientoAdmin.aspx" />
+    <Content Include="MantenimientoProductos.aspx" />
     <Content Include="MantenimientoUsuarios.aspx" />
     <Content Include="MasterPage\assets\demo\chart-area-demo.js" />
     <Content Include="MasterPage\assets\demo\chart-bar-demo.js" />
@@ -114,6 +115,7 @@
     <Content Include="Productos.aspx" />
     <Content Include="RegistrarAdministrador.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
+    <Content Include="RegistroProductos.aspx" />
     <Content Include="Registro\RegistroExitoso\Registro_Exitoso_Css.css" />
     <Content Include="Registro\Registro_Css.css" />
     <Content Include="Registro\Registro_Js.js" />
@@ -137,6 +139,13 @@
     </Compile>
     <Compile Include="MantenimientoAdmin.aspx.designer.cs">
       <DependentUpon>MantenimientoAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MantenimientoProductos.aspx.cs">
+      <DependentUpon>MantenimientoProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MantenimientoProductos.aspx.designer.cs">
+      <DependentUpon>MantenimientoProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="MantenimientoUsuarios.aspx.cs">
       <DependentUpon>MantenimientoUsuarios.aspx</DependentUpon>
@@ -194,6 +203,13 @@
     </Compile>
     <Compile Include="RegistrarUsuario.aspx.designer.cs">
       <DependentUpon>RegistrarUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroProductos.aspx.cs">
+      <DependentUpon>RegistroProductos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegistroProductos.aspx.designer.cs">
+      <DependentUpon>RegistroProductos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usuario.aspx.cs">
       <DependentUpon>Usuario.aspx</DependentUpon>

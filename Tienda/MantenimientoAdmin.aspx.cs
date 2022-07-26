@@ -22,7 +22,7 @@ namespace Tienda
         {
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
             {
-                var ListadoAdministradores = ContextoDB.ADMINISTRADORE.Where(s => s.TIPO_USUARIO == "Administrador").ToList();
+                var ListadoAdministradores = ContextoDB.ADMINISTRADORES.Where(s => s.TIPO_USUARIO == "Administrador").ToList();
 
                 if (ListadoAdministradores.Count >= 0)
                 {
@@ -76,13 +76,12 @@ namespace Tienda
 
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
             {
-                ADMINISTRADORE obj = ContextoDB.ADMINISTRADORE.First(x => x.CORREO_ELECTRONICO_ADMIN == AdministradorId);
-                ContextoDB.ADMINISTRADORE.Remove(obj);
+                ADMINISTRADORE obj = ContextoDB.ADMINISTRADORES.First(x => x.CORREO_ELECTRONICO_ADMIN == AdministradorId);
+                ContextoDB.ADMINISTRADORES.Remove(obj);
                 ContextoDB.SaveChanges();
                 lblCamposNulos.Text = "Eliminado correctamente";
                 CargarAdministradores();
             }
-
         }
 
         protected void GridAdmin_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -104,7 +103,7 @@ namespace Tienda
 
                 using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
                 {
-                    ContextoDB.ADMINISTRADORE.Add(objAdministrador);
+                    ContextoDB.ADMINISTRADORES.Add(objAdministrador);
                     ContextoDB.SaveChanges();
                     GridAdministrador.EditIndex = -1;
                     CargarAdministradores();
@@ -147,7 +146,7 @@ namespace Tienda
                 {
                     String IdAdmin = Convert.ToString(GridAdministrador.DataKeys[e.RowIndex].Value);
 
-                    ADMINISTRADORE obj = ContextoDB.ADMINISTRADORE.First(x => x.CORREO_ELECTRONICO_ADMIN == IdAdmin);
+                    ADMINISTRADORE obj = ContextoDB.ADMINISTRADORES.First(x => x.CORREO_ELECTRONICO_ADMIN == IdAdmin);
 
                     obj.NOMBRE_USUARIO_ADMIN = txtNombreUsuarioAdmnin.Text;
                     obj.CORREO_ELECTRONICO_ADMIN = txtCorreoAdmin.Text;

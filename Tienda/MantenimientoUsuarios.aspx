@@ -4,7 +4,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
+    <h4>Mantenimiento de usuarios</h4>
+    </br>
     <asp:GridView ID="GridUsuarios" 
         runat="server" class="table table-dark table-striped" 
         AutoGenerateColumns="False"

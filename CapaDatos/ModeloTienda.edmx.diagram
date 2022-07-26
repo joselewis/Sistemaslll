@@ -5,16 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bfd7bf5a3cb74957af79a3421a5f5477" Name="Diagram1">
-        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.ADMINISTRADORE" Width="1.5" PointX="5.875" PointY="4.25" />
+        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.ADMINISTRADORE" Width="2.25" PointX="0.875" PointY="5.875" />
         <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.METODO_PAGO" Width="1.5" PointX="3.125" PointY="3.25" />
-        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.PRODUCTO" Width="1.5" PointX="5.875" PointY="0.5" />
-        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.SUPERMERCADO" Width="1.5" PointX="8.125" PointY="0.5" />
-        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.sysdiagram" Width="1.5" PointX="0.875" PointY="5.375" />
         <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.USUARIO_ROL" Width="1.5" PointX="3.125" PointY="0.5" />
         <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.USUARIO" Width="1.5" PointX="0.875" PointY="1.375" />
         <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_USUARIO_TARJETA" />
-        <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_SUPERMERCADO_PRODUCTO" />
         <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_USUARIO_ROL" />
+        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.PRODUCTO" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
     <link href="css/RegistroAdmin.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <h4>Ingresar nuevo administrador</h4>
+        <h4>Registrar nuevo administrador</h4>
         </br>
         <div class="formulario">
             <div class="form-floating mb-2">

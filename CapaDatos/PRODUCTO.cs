@@ -14,20 +14,15 @@ namespace CapaDatos
     
     public partial class PRODUCTO
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PRODUCTO()
-        {
-            this.SUPERMERCADOes = new HashSet<SUPERMERCADO>();
-        }
-    
         public int ID_PRODUCTO { get; set; }
-        public decimal CODIGO_PRODUCTO { get; set; }
+        public int CODIGO_PRODUCTO { get; set; }
         public string NOMBRE_PRODUCTO { get; set; }
         public int PRECIO_PRODUCTO { get; set; }
         public int CANTIDAD_PRODUCTO { get; set; }
         public string DESCRIPCION_PRODUCTO { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SUPERMERCADO> SUPERMERCADOes { get; set; }
+        public string TIPO_PRODUCTO { get; set; }
+        public string IMAGEN { get; set; }
+        public string MARCA { get; set; }
+        public bool PRODUCTO_ACTIVO { get; set; }
     }
 }

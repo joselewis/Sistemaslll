@@ -32,7 +32,7 @@ namespace Tienda
                 oAdministrador.CORREO_ELECTRONICO_ADMIN = ReCajaAdminCorreo.Text;
                 oAdministrador.TIPO_USUARIO = "Administrador";
 
-                ContextoBD.ADMINISTRADORE.Add(oAdministrador);
+                ContextoBD.ADMINISTRADORES.Add(oAdministrador);
                 ContextoBD.SaveChanges();
                 Creacion_Cuenta_Admin = 1;
             }
