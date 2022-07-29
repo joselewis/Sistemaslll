@@ -16,8 +16,18 @@
 <div class="row">
     <asp:Repeater runat="server" ID="RepetidorImagenes">
         <ItemTemplate>
-            <div class="col-md-2 col-lg-2 col-xl-2">
-                <img class="img-fluid rounded-3"  src="data:image/jpg;base64,<%#Convert.ToBase64String((byte[])DataBinder.Eval(Container.DataItem,"IMAGEN"))%>"/>
+            <div class="card" style="width: 17rem;">
+                <div class="card-body ">
+                    <img class="card-img-top"  src="data:image/jpg;base64,<%#Convert.ToBase64String((byte[])DataBinder.Eval(Container.DataItem,"IMAGEN"))%>"/>
+                    <Center>
+                        <h5 class="card-title"><%# DataBinder.Eval(Container.DataItem,"NOMBRE_PRODUCTO")%></h5>
+                        <p class="card-text"><%# DataBinder.Eval(Container.DataItem,"DESCRIPCION_PRODUCTO")%></p>
+                        <h6 class="card-text">₡<%# DataBinder.Eval(Container.DataItem,"PRECIO_PRODUCTO")%></h6> 
+                    </Center>  
+                </div>
+                <Center>
+                    <asp:Button runat="server" ID="VerProducto" class="btn btn-dark" Text="Ver" OnClick="VerProducto_Click"></asp:Button>
+                </Center>
             </div>
         </ItemTemplate>
     </asp:Repeater>

@@ -42,5 +42,9 @@ namespace Tienda
             }
         }
 
+        protected void VerProducto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
