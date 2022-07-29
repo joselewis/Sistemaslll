@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using CapaDatos;
+using System.Drawing;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Tienda
 {
@@ -14,37 +17,43 @@ namespace Tienda
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         void RegistrarProducto()
         {
-            using (TIENDA_PRODUCTOSEntities ContextoBD = new TIENDA_PRODUCTOSEntities())
+            try
             {
-                PRODUCTO oProducto = new PRODUCTO();
+                using (TIENDA_PRODUCTOSEntities ContextoBD = new TIENDA_PRODUCTOSEntities())
+                {
+                    PRODUCTOS oProducto = new PRODUCTOS();
 
-                oProducto.CODIGO_PRODUCTO = Convert.ToInt32(CajaCodigoProducto.Text);
-                oProducto.NOMBRE_PRODUCTO = CajaNombreProducto.Text;
-                oProducto.PRECIO_PRODUCTO = Convert.ToInt32(CajaPrecioProducto.Text);
-                oProducto.CANTIDAD_PRODUCTO = Convert.ToInt32(CajaCantidadProducto.Text);
-                oProducto.DESCRIPCION_PRODUCTO = CajaDescripcionProducto.Text;
-                oProducto.TIPO_PRODUCTO = CajaTipoProducto.Text;
-                oProducto.MARCA = CajaMarcaProducto.Text;
-                oProducto.PRODUCTO_ACTIVO = CheckBoxProductoActivo.Checked;
-                oProducto.IMAGEN = CajaImagenProducto.Text.ToString();
+                    oProducto.CODIGO_PRODUCTO = Convert.ToInt32(CajaCodigoProducto.Text);
+                    oProducto.NOMBRE_PRODUCTO = CajaNombreProducto.Text;
+                    oProducto.PRECIO_PRODUCTO = Convert.ToInt32(CajaPrecioProducto.Text);
+                    oProducto.CANTIDAD_PRODUCTO = Convert.ToInt32(CajaCantidadProducto.Text);
+                    oProducto.DESCRIPCION_PRODUCTO = CajaDescripcionProducto.Text;
+                    oProducto.TIPO_PRODUCTO = CajaTipoProducto.Text;
+                    oProducto.MARCA = CajaMarcaProducto.Text;
+                    oProducto.PRODUCTO_ACTIVO = CheckBoxProductoActivo.Checked;
+                    oProducto.IMAGEN = ImagenProducto.FileBytes;
 
-                ContextoBD.PRODUCTOS.Add(oProducto);
-                ContextoBD.SaveChanges();
+                    ContextoBD.PRODUCTOS.Add(oProducto);
+                    ContextoBD.SaveChanges();
 
-                ProductoIngresado = 1;
+                    ProductoIngresado = 1;
+                }
+            }
+            catch(Exception ex)
+            {
+                lblAlamacenado.Text = ex.Message;
             }
         }
 
         void ValidacionIngresoProducto()
         {
-            if(ProductoIngresado == 1)
-            {
-                //Page.ClientScript.RegisterStartupScript(Page.GetType(), "Desea añadir otro producto?", "<script language = 'javascript'> alert('" + Mensaje + "');</script>");
+            if (ProductoIngresado == 1)
+            { 
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sr1", "Swal.fire('Producto ingresado correctamente.')", true);
                 Response.Redirect("/MantenimientoProductos.aspx");
             }

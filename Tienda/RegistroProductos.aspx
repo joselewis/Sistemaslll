@@ -9,7 +9,7 @@
     <h4>Registrar nuevo producto</h4>
     </br>
     <div class="input-group mb-3">
-      <asp:TextBox runat="server" type="file" class="form-control" ID="CajaImagenProducto" ></asp:TextBox>
+      <asp:FileUpload runat="server" class="form-control" ID="ImagenProducto" ></asp:FileUpload>
     </div>
     <div class="input-group mb-3">
       <asp:TextBox runat="server" ID="CajaCodigoProducto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="Código del producto"></asp:TextBox>
@@ -41,4 +41,5 @@
     <div class="d-grid gap-2 col-4 mx-auto">
       <asp:Button runat="server" Text="Registrar producto" class="btn btn-dark" ID="Btn_Registar_Producto" OnClick="Btn_Registar_Producto_Click"></asp:Button>
     </div>
+    <asp:Label ID="lblAlamacenado" runat="server" ForeColor="Lime" Visible="True"></asp:Label>
 </asp:Content>

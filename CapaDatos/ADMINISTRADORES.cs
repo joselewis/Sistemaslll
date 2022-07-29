@@ -12,7 +12,7 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class ADMINISTRADORE
+    public partial class ADMINISTRADORES
     {
         public int ID_USUARIO_ADMIN { get; set; }
         public string CORREO_ELECTRONICO_ADMIN { get; set; }

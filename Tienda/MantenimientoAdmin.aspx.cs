@@ -31,7 +31,7 @@ namespace Tienda
                 }
                 else
                 {
-                    ADMINISTRADORE objAdministrador = new ADMINISTRADORE();
+                    ADMINISTRADORES objAdministrador = new ADMINISTRADORES();
                     ListadoAdministradores.Add(objAdministrador);
                     GridAdministrador.DataSource = ListadoAdministradores;
                     GridAdministrador.DataBind();
@@ -76,7 +76,7 @@ namespace Tienda
 
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
             {
-                ADMINISTRADORE obj = ContextoDB.ADMINISTRADORES.First(x => x.CORREO_ELECTRONICO_ADMIN == AdministradorId);
+                ADMINISTRADORES obj = ContextoDB.ADMINISTRADORES.First(x => x.CORREO_ELECTRONICO_ADMIN == AdministradorId);
                 ContextoDB.ADMINISTRADORES.Remove(obj);
                 ContextoDB.SaveChanges();
                 lblCamposNulos.Text = "Eliminado correctamente";
@@ -90,7 +90,7 @@ namespace Tienda
 
             if(e.CommandName.Equals("AddNew") && ValidarFooter == 1)
             {
-                ADMINISTRADORE objAdministrador = new ADMINISTRADORE();
+                ADMINISTRADORES objAdministrador = new ADMINISTRADORES();
 
                 objAdministrador.NOMBRE_USUARIO_ADMIN = (GridAdministrador.FooterRow.FindControl("txt_footer_UsuarioAdmin") as TextBox).Text.Trim();
                 objAdministrador.NOMBRE_ADMIN = (GridAdministrador.FooterRow.FindControl("txt_footer_NombreAdmin") as TextBox).Text.Trim();
@@ -146,7 +146,7 @@ namespace Tienda
                 {
                     String IdAdmin = Convert.ToString(GridAdministrador.DataKeys[e.RowIndex].Value);
 
-                    ADMINISTRADORE obj = ContextoDB.ADMINISTRADORES.First(x => x.CORREO_ELECTRONICO_ADMIN == IdAdmin);
+                    ADMINISTRADORES obj = ContextoDB.ADMINISTRADORES.First(x => x.CORREO_ELECTRONICO_ADMIN == IdAdmin);
 
                     obj.NOMBRE_USUARIO_ADMIN = txtNombreUsuarioAdmnin.Text;
                     obj.CORREO_ELECTRONICO_ADMIN = txtCorreoAdmin.Text;

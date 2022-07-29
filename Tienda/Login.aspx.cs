@@ -32,6 +32,7 @@ namespace Tienda
                             Page.Session["TIPO_USUARIO"] = usuario.TIPO_USUARIO;
                             Page.Session["CORREO_ELECTRONICO"] = usuario.CORREO_ELECTRONICO;
                             Page.Session["TELEFONO_USUARIO"] = usuario.TELEFONO_USUARIO;
+                            
                             credenciales = 1;
                         }
                     }

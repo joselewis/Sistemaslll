@@ -20,7 +20,7 @@ namespace Tienda
         {
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
             {
-                USUARIO oUsuario = new USUARIO();
+                USUARIOS oUsuario = new USUARIOS();
 
                 oUsuario.NOMBRE_USUARIO = ReCajaNomUsuario.Text;
                 oUsuario.NOMBRE = ReCajaNombre.Text;

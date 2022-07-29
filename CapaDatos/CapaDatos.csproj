@@ -50,7 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ADMINISTRADORE.cs">
+    <Compile Include="ADMINISTRADORES.cs">
+      <DependentUpon>ModeloTienda.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CARRITO_COMPRAS.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
@@ -72,14 +75,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloTienda.edmx</DependentUpon>
     </Compile>
-    <Compile Include="PRODUCTO.cs">
+    <Compile Include="PRODUCTOS.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="USUARIO.cs">
-      <DependentUpon>ModeloTienda.tt</DependentUpon>
-    </Compile>
-    <Compile Include="USUARIO_ROL.cs">
+    <Compile Include="USUARIOS.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
   </ItemGroup>

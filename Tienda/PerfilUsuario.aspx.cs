@@ -17,5 +17,10 @@ namespace Tienda
             Correo.InnerHtml = "<h6>" + Session["CORREO_ELECTRONICO"].ToString() + "</h6>";
             Telefono.InnerHtml = "<h6>" + Session["TELEFONO_USUARIO"].ToString() + "</h6>";
         }
+
+        protected void IrMetodoPago_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/MetodoPago.aspx");
+        }
     }
 }

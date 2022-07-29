@@ -31,7 +31,7 @@ namespace Tienda
                 }
                 else
                 {
-                    PRODUCTO objProducto = new PRODUCTO();
+                    PRODUCTOS objProducto = new PRODUCTOS();
                     ListadoProductos.Add(objProducto);
                     GridProductos.DataSource = ListadoProductos;
                     GridProductos.DataBind();
@@ -70,7 +70,7 @@ namespace Tienda
 
             if (e.CommandName.Equals("AddNew") && ValidarFooter == 1)
             {
-                PRODUCTO objProducto = new PRODUCTO();
+                PRODUCTOS objProducto = new PRODUCTOS();
 
                 objProducto.CODIGO_PRODUCTO = Convert.ToInt32((GridProductos.FooterRow.FindControl("txt_footer_Codigo_Producto") as TextBox).Text.Trim());
                 objProducto.NOMBRE_PRODUCTO = (GridProductos.FooterRow.FindControl("txt_footer_Producto") as TextBox).Text.Trim();
@@ -78,7 +78,7 @@ namespace Tienda
                 objProducto.CANTIDAD_PRODUCTO = Convert.ToInt32((GridProductos.FooterRow.FindControl("txt_footer_Cantidad_Producto") as TextBox).Text.Trim());
                 objProducto.DESCRIPCION_PRODUCTO = (GridProductos.FooterRow.FindControl("txt_footer_Descripcion_Producto") as TextBox).Text.Trim();
                 objProducto.TIPO_PRODUCTO = (GridProductos.FooterRow.FindControl("txt_footer_Tipo_Producto") as TextBox).Text.Trim();
-                objProducto.IMAGEN = (GridProductos.FooterRow.FindControl("txt_footer_Imagen_Producto") as TextBox).Text.Trim();
+                //objProducto.IMAGEN = (GridProductos.FooterRow.FindControl("txt_footer_Imagen_Producto") as TextBox).Text.Trim();
                 objProducto.MARCA = (GridProductos.FooterRow.FindControl("txt_footer_Marca_Producto") as TextBox).Text.Trim();
 
                 using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -98,7 +98,7 @@ namespace Tienda
 
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
             {
-                PRODUCTO obj = ContextoDB.PRODUCTOS.First(x => x.CODIGO_PRODUCTO == Productos);
+                PRODUCTOS obj = ContextoDB.PRODUCTOS.First(x => x.CODIGO_PRODUCTO == Productos);
                 ContextoDB.PRODUCTOS.Remove(obj);
                 ContextoDB.SaveChanges();
                 lblCamposNulos.Text = "Eliminado correctamente";
@@ -140,14 +140,14 @@ namespace Tienda
                 {
                     int IdProducto = Convert.ToInt32(GridProductos.DataKeys[e.RowIndex].Value);
 
-                    PRODUCTO obj = ContextoDB.PRODUCTOS.First(x => x.CODIGO_PRODUCTO == IdProducto);
+                    PRODUCTOS obj = ContextoDB.PRODUCTOS.First(x => x.CODIGO_PRODUCTO == IdProducto);
 
                     obj.NOMBRE_PRODUCTO = txtNombreProducto.Text;
                     obj.CODIGO_PRODUCTO = Convert.ToInt32(txtCodigoProducto.Text);
                     obj.PRECIO_PRODUCTO = Convert.ToInt32(txtPrecioProducto.Text);
                     obj.CANTIDAD_PRODUCTO = Convert.ToInt32(txtCantidadProducto.Text);
                     obj.DESCRIPCION_PRODUCTO = txtDescripcionProducto.Text;
-                    obj.IMAGEN = txtImagenProducto.Text;
+                    //obj.IMAGEN = txtImagenProducto.Text;
                     obj.MARCA = txtMarcaProducto.Text;
                     obj.TIPO_PRODUCTO = txtTipoProducto.Text;
 

@@ -12,17 +12,16 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class PRODUCTO
+    public partial class CARRITO_COMPRAS
     {
-        public int ID_PRODUCTO { get; set; }
+        public int ID_COMPRA { get; set; }
+        public string DETALLE_COMPRA { get; set; }
+        public string CORREO_ELECTRONICO { get; set; }
         public int CODIGO_PRODUCTO { get; set; }
-        public string NOMBRE_PRODUCTO { get; set; }
-        public int PRECIO_PRODUCTO { get; set; }
-        public int CANTIDAD_PRODUCTO { get; set; }
-        public string DESCRIPCION_PRODUCTO { get; set; }
-        public string TIPO_PRODUCTO { get; set; }
-        public string IMAGEN { get; set; }
-        public string MARCA { get; set; }
-        public bool PRODUCTO_ACTIVO { get; set; }
+        public long NUMERO_TARJETA { get; set; }
+    
+        public virtual METODO_PAGO METODO_PAGO { get; set; }
+        public virtual PRODUCTOS PRODUCTOS { get; set; }
+        public virtual USUARIOS USUARIOS { get; set; }
     }
 }

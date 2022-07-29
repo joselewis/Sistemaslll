@@ -11,52 +11,61 @@ namespace Tienda
 {
 
 
-    public partial class PerfilUsuario
+    public partial class MetodoPago
     {
 
         /// <summary>
-        /// Control Nombre.
+        /// Control GridMetodoPago.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Nombre;
+        protected global::System.Web.UI.WebControls.GridView GridMetodoPago;
 
         /// <summary>
-        /// Control NombreUsuario.
+        /// Control lblCamposNulos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NombreUsuario;
+        protected global::System.Web.UI.WebControls.Label lblCamposNulos;
 
         /// <summary>
-        /// Control Correo.
+        /// Control CajaNumeroTarjeta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Correo;
+        protected global::System.Web.UI.WebControls.TextBox CajaNumeroTarjeta;
 
         /// <summary>
-        /// Control Telefono.
+        /// Control CajaMesTarjeta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Telefono;
+        protected global::System.Web.UI.WebControls.TextBox CajaMesTarjeta;
 
         /// <summary>
-        /// Control IrMetodoPago.
+        /// Control CajaAnnoTarjeta.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button IrMetodoPago;
+        protected global::System.Web.UI.WebControls.TextBox CajaAnnoTarjeta;
+
+        /// <summary>
+        /// Control IngresarMetodoPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button IngresarMetodoPago;
     }
 }

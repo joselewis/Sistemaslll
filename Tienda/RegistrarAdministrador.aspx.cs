@@ -21,7 +21,7 @@ namespace Tienda
         {
             using (TIENDA_PRODUCTOSEntities ContextoBD = new TIENDA_PRODUCTOSEntities())
             {
-                ADMINISTRADORE oAdministrador = new ADMINISTRADORE();
+                ADMINISTRADORES oAdministrador = new ADMINISTRADORES();
 
                 oAdministrador.NOMBRE_USUARIO_ADMIN = ReCajaAdminNomUsuario.Text;
                 oAdministrador.NOMBRE_ADMIN = ReCajaAdminNombre.Text;

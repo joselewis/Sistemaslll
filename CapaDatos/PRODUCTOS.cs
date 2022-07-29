@@ -12,21 +12,26 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class METODO_PAGO
+    public partial class PRODUCTOS
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public METODO_PAGO()
+        public PRODUCTOS()
         {
             this.CARRITO_COMPRAS = new HashSet<CARRITO_COMPRAS>();
         }
     
-        public long NUMERO_TARJETA { get; set; }
-        public decimal NUMERO_EXPIRA_1 { get; set; }
-        public decimal NUMERO_EXPIRA_2 { get; set; }
-        public string CORREO_ELECTRONICO { get; set; }
+        public int ID_PRODUCTO { get; set; }
+        public int CODIGO_PRODUCTO { get; set; }
+        public string NOMBRE_PRODUCTO { get; set; }
+        public int PRECIO_PRODUCTO { get; set; }
+        public int CANTIDAD_PRODUCTO { get; set; }
+        public string DESCRIPCION_PRODUCTO { get; set; }
+        public string TIPO_PRODUCTO { get; set; }
+        public byte[] IMAGEN { get; set; }
+        public string MARCA { get; set; }
+        public bool PRODUCTO_ACTIVO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CARRITO_COMPRAS> CARRITO_COMPRAS { get; set; }
-        public virtual USUARIOS USUARIOS { get; set; }
     }
 }

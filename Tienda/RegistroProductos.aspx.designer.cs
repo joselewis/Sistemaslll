@@ -15,13 +15,13 @@ namespace Tienda
     {
 
         /// <summary>
-        /// Control CajaImagenProducto.
+        /// Control ImagenProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CajaImagenProducto;
+        protected global::System.Web.UI.WebControls.FileUpload ImagenProducto;
 
         /// <summary>
         /// Control CajaCodigoProducto.
@@ -103,5 +103,14 @@ namespace Tienda
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Btn_Registar_Producto;
+
+        /// <summary>
+        /// Control lblAlamacenado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAlamacenado;
     }
 }

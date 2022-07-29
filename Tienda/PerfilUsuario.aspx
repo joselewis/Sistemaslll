@@ -11,12 +11,9 @@
         <div class="card mb-3">
           <div class="card-body text-center">
             <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 130px;">
+              class="rounded-circle img-fluid" style="width: 250px;">
               <br />
               <br />
-            <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-dark">Cambiar foto</button>
-            </div>
           </div>
         </div>
       </div>
@@ -59,6 +56,12 @@
               <div class="col-sm-9">
                 <div runat="server" id="Telefono"></div>
               </div>
+            </div>
+               <hr>
+            <div class="row">
+            <div class="d-flex justify-content-center mb-2">
+              <asp:Button runat="server" type="button" class="btn btn-dark" Text="Cambiar método de pago" ID="IrMetodoPago" OnClick="IrMetodoPago_Click"></asp:Button>
+            </div>
             </div>
           </div>
       </div>

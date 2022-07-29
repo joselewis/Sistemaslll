@@ -74,6 +74,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CarritoCompras.aspx" />
+    <Content Include="Carrito\CarritoCss.css" />
     <Content Include="Global.asax" />
     <Content Include="ImgMantenimiento\cancel2.png" />
     <Content Include="ImgMantenimiento\delete2.png" />
@@ -81,6 +83,7 @@
     <Content Include="ImgMantenimiento\guardar.png" />
     <Content Include="ImgMantenimiento\nuevo.png" />
     <Content Include="ImgPerfiles\Gato.jpg" />
+    <Content Include="ImgPerfiles\sweet_black_cat_20210729_0.png" />
     <Content Include="ImgProductos\Computadoras\6335589cv16d.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Login\css\bootstrap.min.css" />
@@ -109,10 +112,14 @@
     <Content Include="MasterPage\css\styles.css" />
     <Content Include="MasterPage\js\datatables-simple-demo.js" />
     <Content Include="MasterPage\js\scripts.js" />
+    <Content Include="MetodoPago.aspx" />
     <Content Include="PaginaPrincipal.aspx" />
     <Content Include="PerfilAdministrador.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="Productos.aspx" />
+    <Content Include="Productos\assets\favicon.ico" />
+    <Content Include="Productos\css\styles.css" />
+    <Content Include="Productos\js\scripts.js" />
     <Content Include="RegistrarAdministrador.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="RegistroProductos.aspx" />
@@ -123,6 +130,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarritoCompras.aspx.cs">
+      <DependentUpon>CarritoCompras.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CarritoCompras.aspx.designer.cs">
+      <DependentUpon>CarritoCompras.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,6 +167,13 @@
     </Compile>
     <Compile Include="MantenimientoUsuarios.aspx.designer.cs">
       <DependentUpon>MantenimientoUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MetodoPago.aspx.cs">
+      <DependentUpon>MetodoPago.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MetodoPago.aspx.designer.cs">
+      <DependentUpon>MetodoPago.aspx</DependentUpon>
     </Compile>
     <Compile Include="PaginaPrincipal.aspx.cs">
       <DependentUpon>PaginaPrincipal.aspx</DependentUpon>

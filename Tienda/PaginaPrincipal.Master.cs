@@ -115,5 +115,10 @@ namespace Tienda
 
             Titulo_Admin.InnerHtml += LinksMenuPrincipal;
         }
+
+        protected void btnBusqueda_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
