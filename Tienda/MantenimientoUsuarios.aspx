@@ -14,7 +14,7 @@
         OnRowDeleting="GridUsuario_RowDeleting" 
         OnRowEditing="GridUsuario_RowEditing" 
         nRowUpdating="GridUsuario_RowUpdating" 
-        Width="997px" 
+        Width="848px" 
         DataKeyNames="CORREO_ELECTRONICO" 
         OnSelectedIndexChanged="GridUsuario_SelectedIndexChanged" 
         Height="126px" OnRowUpdating="GridUsuario_RowUpdating">
@@ -40,7 +40,7 @@
                 </ItemTemplate>
             </asp:TemplateField>
             
-            <asp:TemplateField HeaderText="Contraseña">
+            <asp:TemplateField HeaderText="Contraseña" Visible="False">
                 <EditItemTemplate>
                     <asp:TextBox ID="Txt_Contrasenna_Usuario" runat="server" Text='<%# Eval("CONTRASENNA") %>'></asp:TextBox>
                 </EditItemTemplate>

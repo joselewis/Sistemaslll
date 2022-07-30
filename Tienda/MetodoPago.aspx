@@ -13,7 +13,7 @@
     OnRowDeleting="GridTarjeta_RowDeleting" 
     OnRowEditing="GridTarjeta_RowEditing" 
     nRowUpdating="GridUsuario_RowUpdating" 
-    Width="997px" 
+    Width="471px" 
     DataKeyNames="NUMERO_TARJETA" 
     OnSelectedIndexChanged="GridTarjeta_SelectedIndexChanged" 
     Height="126px" OnRowUpdating="GridTarjeta_RowUpdating">
@@ -54,7 +54,7 @@
             </ItemTemplate>
         </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Correo">
+        <asp:TemplateField HeaderText="Correo" Visible="False">
             <EditItemTemplate>
                 <asp:TextBox ID="Txt_Correo_Usuario" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:TextBox>
             </EditItemTemplate>

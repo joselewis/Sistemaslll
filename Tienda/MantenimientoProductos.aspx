@@ -14,7 +14,7 @@
         OnRowDeleting="GridProducto_RowDeleting" 
         OnRowEditing="GridProducto_RowEditing" 
         nRowUpdating="GridAdmin_RowUpdating" 
-        Width="997px" 
+        Width="827px" 
         DataKeyNames="CODIGO_PRODUCTO" 
         OnSelectedIndexChanged="GridProducto_SelectedIndexChanged" 
         Height="126px" OnRowUpdating="GridProducto_RowUpdating">

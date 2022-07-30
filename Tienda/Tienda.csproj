@@ -117,9 +117,8 @@
     <Content Include="PerfilAdministrador.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="Productos.aspx" />
-    <Content Include="Productos\assets\favicon.ico" />
-    <Content Include="Productos\css\styles.css" />
-    <Content Include="Productos\js\scripts.js" />
+    <Content Include="Productos\ProductosCss.css" />
+    <Content Include="Productos\ProductosJS.js" />
     <Content Include="RegistrarAdministrador.aspx" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="RegistroProductos.aspx" />
