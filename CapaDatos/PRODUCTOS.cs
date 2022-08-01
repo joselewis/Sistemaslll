@@ -17,7 +17,7 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PRODUCTOS()
         {
-            this.CARRITO_COMPRAS = new HashSet<CARRITO_COMPRAS>();
+            this.CARRITO_COMPRAS1 = new HashSet<CARRITO_COMPRAS1>();
         }
     
         public int ID_PRODUCTO { get; set; }
@@ -32,6 +32,6 @@ namespace CapaDatos
         public bool PRODUCTO_ACTIVO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CARRITO_COMPRAS> CARRITO_COMPRAS { get; set; }
+        public virtual ICollection<CARRITO_COMPRAS1> CARRITO_COMPRAS1 { get; set; }
     }
 }

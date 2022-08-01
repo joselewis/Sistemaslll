@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <h4>Método de pago</h4>
-</br>
+<br />
 <asp:GridView ID="GridMetodoPago" 
     runat="server" class="table table-dark table-striped" 
     AutoGenerateColumns="False"
@@ -66,9 +66,9 @@
             </ItemTemplate>
         </asp:TemplateField>
         
-        <asp:TemplateField HeaderText="Correo" Visible="False">
+        <asp:TemplateField HeaderText="Estado" Visible="false">
             <EditItemTemplate>
-                <asp:Label ID="LabelCorreoElectronico" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:Label>
+                <asp:Label ID="LabelPagoActivo" runat="server" Text='<%# Eval("TARJETA_ACTICA") %>'></asp:Label>
             </EditItemTemplate>
         </asp:TemplateField>
             
@@ -95,7 +95,6 @@
     </Columns>
 </asp:GridView>
 </div>
-<asp:Label ID="lblCamposNulos" runat="server" ForeColor="Lime" Text="Los campos  son requeridos ***" Visible="False"></asp:Label>
 <div class="row">
     <div class="col">
       <asp:TextBox runat="server" type="text" class="form-control" placeholder="Numéro tarjeta" ID="CajaNumeroTarjeta"></asp:TextBox>
@@ -106,10 +105,11 @@
     <div class="col">
       <asp:TextBox runat="server" type="text" class="form-control" placeholder="Año expira" ID="CajaAnnoTarjeta"></asp:TextBox>
     </div>
+    <asp:Label ID="lblCamposPagoNulo" runat="server" ForeColor="Lime" Visible="False"></asp:Label>
 </div>
-</br>
+<br />
 <center>
     <asp:Button runat="server" type="button" class="btn btn-dark" Text="Ingresar método de pago" ID="IngresarMetodoPago" OnClick="IngresarMetodoPago_Click"></asp:Button>
 </center>
-
+<br />
 </asp:Content>

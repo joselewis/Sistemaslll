@@ -6,14 +6,14 @@
     <edmx:Diagrams>
       <Diagram DiagramId="bfd7bf5a3cb74957af79a3421a5f5477" Name="Diagram1">
         <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.ADMINISTRADORES" Width="1.5" PointX="7.875" PointY="1.125" />
-        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.METODO_PAGO" Width="1.5" PointX="3" PointY="1.625" />
         <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.PRODUCTOS" Width="1.5" PointX="3" PointY="5" />
         <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.USUARIOS" Width="1.5" PointX="0.75" PointY="1" />
-        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.CARRITO_COMPRAS" Width="2" PointX="5.25" PointY="1.25" />
-        <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO" />
+        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.METODO_PAGO" Width="1.5" PointX="3" PointY="1.5" />
         <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_USUARIO_TARJETA" />
-        <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO" />
-        <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO" />
+        <EntityTypeShape EntityType="TIENDA_PRODUCTOSModel.CARRITO_COMPRAS1" Width="1.5" PointX="5.875" PointY="1" />
+        <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO" />
+        <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO1" />
+        <AssociationConnector Association="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,137 +17,137 @@ namespace Tienda
             if (!IsPostBack)
             {
                 CargarMetodoPago();
+                ValidacionIngresoMetodoPago();
             }
         }
 
         void CrearMetodoPago()
         {
-            using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+            try
             {
-                METODO_PAGO oMetodoPago = new METODO_PAGO();
+                using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+                {
+                    METODO_PAGO oMetodoPago = new METODO_PAGO();
 
-                oMetodoPago.NUMERO_TARJETA = Convert.ToInt64(CajaNumeroTarjeta.Text);
-                oMetodoPago.NUMERO_EXPIRA_1 = Convert.ToInt32(CajaMesTarjeta.Text);
-                oMetodoPago.NUMERO_EXPIRA_2 = Convert.ToInt32(CajaAnnoTarjeta.Text);
-                oMetodoPago.CORREO_ELECTRONICO = Session["CORREO_ELECTRONICO"].ToString();
+                    string CorreoUsuario = (string)Page.Session["CORREO_ELECTRONICO"];
 
-                ContextoDB.METODO_PAGO.Add(oMetodoPago);
-                ContextoDB.SaveChanges();
+                    oMetodoPago.NUMERO_TARJETA = Convert.ToInt64(CajaNumeroTarjeta.Text);
+                    oMetodoPago.NUMERO_EXPIRA_1 = Convert.ToInt32(CajaMesTarjeta.Text);
+                    oMetodoPago.NUMERO_EXPIRA_2 = Convert.ToInt32(CajaAnnoTarjeta.Text);
+                    oMetodoPago.TARJETA_ACTICA = true;
+                    oMetodoPago.CORREO_ELECTRONICO = CorreoUsuario;
 
-                Creacion_Metodo_Pago = 1;
-            }      
+                    ContextoDB.METODO_PAGO.Add(oMetodoPago);
+                    ContextoDB.SaveChanges();
+
+                    Creacion_Metodo_Pago = 1;
+                }
+            }
+            catch(Exception ex)
+            {
+                lblCamposPagoNulo.Text = ex.Message;  
+            }
         }
 
         void CargarMetodoPago()
         {
-            using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+            try
             {
-                string usuario = Request.QueryString["CORREO_ELECTRONICO"];
-
-                var ListadoMetodoPago = ContextoDB.METODO_PAGO.ToList();
-
-                if (ListadoMetodoPago.Count > 0)
+                using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
                 {
-                    GridMetodoPago.DataSource= ListadoMetodoPago;
-                    GridMetodoPago.DataBind();
-                }
-                else
-                {
-                    METODO_PAGO objPago = new METODO_PAGO();
+                    string CorreoUsuario = (string)Page.Session["CORREO_ELECTRONICO"];
 
-                    ListadoMetodoPago.Add(objPago);
-                    GridMetodoPago.DataSource = ListadoMetodoPago;
-                    GridMetodoPago.DataBind();
-                    GridMetodoPago.Rows[0].Cells.Clear();
-                    GridMetodoPago.Rows[0].Cells.Add(new TableCell());
-                    GridMetodoPago.Rows[0].Cells[0].ColumnSpan = 5;
-                    GridMetodoPago.Rows[0].Cells[0].Text = "No hay métodos de pago registrados";
-                    GridMetodoPago.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
-                }
+                    var ListadoMetodoPago = ContextoDB.METODO_PAGO.Where(s => s.TARJETA_ACTICA == true && s.CORREO_ELECTRONICO == CorreoUsuario).ToList();
 
-                GridMetodoPago.EditIndex = -1;
+                    if (ListadoMetodoPago.Count > 0)
+                    {
+                        GridMetodoPago.DataSource = ListadoMetodoPago;
+                        GridMetodoPago.DataBind();
+                    }
+                    else
+                    {
+                        METODO_PAGO objPago = new METODO_PAGO();
+                        ListadoMetodoPago.Add(objPago);
+
+                        GridMetodoPago.DataSource = ListadoMetodoPago;
+                        GridMetodoPago.DataBind();
+                        GridMetodoPago.Rows[0].Cells.Clear();
+                        GridMetodoPago.Rows[0].Cells.Add(new TableCell());
+                        GridMetodoPago.Rows[0].Cells[0].ColumnSpan = 5;
+                        GridMetodoPago.Rows[0].Cells[0].Text = "No hay métodos de pago registrados";
+                        GridMetodoPago.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
+                    }
+                    GridMetodoPago.EditIndex = -1;
+                }
+            }
+            catch(Exception ex)
+            {
+                lblCamposPagoNulo.Text = ex.Message;
             }
         }
 
-        int Validar()
+        void ValidacionIngresoMetodoPago()
         {
-            int respuesta = 0;
-
-            if(String.IsNullOrEmpty((GridMetodoPago.FooterRow.FindControl("txt_footer_Numero_Tarjeta") as TextBox).Text))
+            try
             {
-                lblCamposNulos.Visible = true;
+                if (Creacion_Metodo_Pago == 1)
+                {
+                    Response.Redirect("/MetodoPago.aspx");
+                }
             }
-            else
+            catch(Exception ex)
             {
-                respuesta = 1;
+                lblCamposPagoNulo.Text = "Complete los campos solocitados " + ex.Message;
             }
-
-            return (respuesta);
+                        
         }
 
         protected void IngresarMetodoPago_Click(object sender, EventArgs e)
         {
             CrearMetodoPago();
+            ValidacionIngresoMetodoPago();
         }
 
         protected void GridTarjeta_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            GridMetodoPago.EditIndex = -1;
-            CargarMetodoPago();
-            lblCamposNulos.Visible = false;
+            
         }
 
         protected void GridTarjeta_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int ValidarFooter = Validar();
-
-            if (e.CommandName.Equals("AddNew") && ValidarFooter == 1)
-            {
-                METODO_PAGO objPago = new METODO_PAGO();
-                string usuario = Request.QueryString["CORREO_ELECTRONICO"];
-
-                objPago.CORREO_ELECTRONICO = usuario;
-                objPago.NUMERO_TARJETA = Convert.ToInt64((GridMetodoPago.FooterRow.FindControl("txt_footer_Numero_Tarjeta") as TextBox).Text.Trim());
-                objPago.NUMERO_EXPIRA_1 = Convert.ToInt32((GridMetodoPago.FooterRow.FindControl("txt_footer_Tarjeta_Mes") as TextBox).Text.Trim());
-                objPago.NUMERO_EXPIRA_2 = Convert.ToInt32((GridMetodoPago.FooterRow.FindControl("txt_footer_Tarjeta_Anno") as TextBox).Text.Trim());
-
-
-                using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
-                {
-                    ContextoDB.METODO_PAGO.Add(objPago);
-                    ContextoDB.SaveChanges();
-                    GridMetodoPago.EditIndex = -1;
-                    CargarMetodoPago();
-                }
-
-                lblCamposNulos.Visible = false;
-            }
+            
         }
 
         protected void GridTarjeta_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            METODO_PAGO objPago = new METODO_PAGO();
-
-            string usuario = Request.QueryString["USUARIO"];
-
-            objPago.NUMERO_TARJETA = Int64.Parse((GridMetodoPago.DataKeys[e.RowIndex].Value.ToString()));
-
-            using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+            try
             {
-                METODO_PAGO aux = ContextoDB.METODO_PAGO.Find(objPago.NUMERO_TARJETA);
+                METODO_PAGO objPago = new METODO_PAGO();
 
-                ContextoDB.METODO_PAGO.Remove(aux);
-                ContextoDB.SaveChanges();
-                CargarMetodoPago();
-                lblCamposNulos.Text = "Eliminado correctamente";
+                string usuario = Request.QueryString["USUARIO"];
+
+                objPago.NUMERO_TARJETA = Int64.Parse((GridMetodoPago.DataKeys[e.RowIndex].Value.ToString()));
+
+                using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+                {
+                    METODO_PAGO aux = ContextoDB.METODO_PAGO.Find(objPago.NUMERO_TARJETA);
+
+                    ContextoDB.METODO_PAGO.Remove(aux);
+                    ContextoDB.SaveChanges();
+                    CargarMetodoPago();
+                    lblCamposPagoNulo.Visible = true;
+                    lblCamposPagoNulo.Text = "Eliminado correctamente";
+                }
+            }
+            catch(Exception ex)
+            {
+                lblCamposPagoNulo.Text = ex.Message;
             }
         }
 
         protected void GridTarjeta_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            GridMetodoPago.EditIndex = e.NewEditIndex;
-            CargarMetodoPago();
-            lblCamposNulos.Visible = false;
+            
         }
 
         protected void GridTarjeta_RowUpdating(object sender, GridViewUpdateEventArgs e)

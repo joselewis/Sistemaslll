@@ -82,6 +82,9 @@
     <Content Include="ImgMantenimiento\editar.png" />
     <Content Include="ImgMantenimiento\guardar.png" />
     <Content Include="ImgMantenimiento\nuevo.png" />
+    <Content Include="ImgPaginaPrincipal\4538906.jpg" />
+    <Content Include="ImgPaginaPrincipal\dc-comics-layoffs-reportedly-affect-a-third-of-editorial-sta_g9ap.jpg" />
+    <Content Include="ImgPaginaPrincipal\NbkvkgfMP6du7nre4qUH6K.jpg" />
     <Content Include="ImgPerfiles\Gato.jpg" />
     <Content Include="ImgPerfiles\sweet_black_cat_20210729_0.png" />
     <Content Include="Login.aspx" />
@@ -113,6 +116,7 @@
     <Content Include="MasterPage\js\scripts.js" />
     <Content Include="MetodoPago.aspx" />
     <Content Include="PaginaPrincipal.aspx" />
+    <Content Include="PaginaPrincipal\PaginaPrincipal.css" />
     <Content Include="PerfilAdministrador.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="ProductoEspecifico.aspx" />

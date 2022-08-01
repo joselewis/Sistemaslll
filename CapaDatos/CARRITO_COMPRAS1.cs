@@ -12,7 +12,7 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class CARRITO_COMPRAS
+    public partial class CARRITO_COMPRAS1
     {
         public int ID_COMPRA { get; set; }
         public string DETALLE_COMPRA { get; set; }

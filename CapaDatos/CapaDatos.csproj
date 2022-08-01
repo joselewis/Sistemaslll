@@ -53,7 +53,7 @@
     <Compile Include="ADMINISTRADORES.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
-    <Compile Include="CARRITO_COMPRAS.cs">
+    <Compile Include="CARRITO_COMPRAS1.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />

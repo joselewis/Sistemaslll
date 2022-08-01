@@ -24,15 +24,6 @@ namespace Tienda
         protected global::System.Web.UI.WebControls.GridView GridMetodoPago;
 
         /// <summary>
-        /// Control lblCamposNulos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCamposNulos;
-
-        /// <summary>
         /// Control CajaNumeroTarjeta.
         /// </summary>
         /// <remarks>
@@ -58,6 +49,15 @@ namespace Tienda
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox CajaAnnoTarjeta;
+
+        /// <summary>
+        /// Control lblCamposPagoNulo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCamposPagoNulo;
 
         /// <summary>
         /// Control IngresarMetodoPago.

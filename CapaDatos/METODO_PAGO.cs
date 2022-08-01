@@ -17,16 +17,17 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public METODO_PAGO()
         {
-            this.CARRITO_COMPRAS = new HashSet<CARRITO_COMPRAS>();
+            this.CARRITO_COMPRAS = new HashSet<CARRITO_COMPRAS1>();
         }
     
         public long NUMERO_TARJETA { get; set; }
         public decimal NUMERO_EXPIRA_1 { get; set; }
         public decimal NUMERO_EXPIRA_2 { get; set; }
         public string CORREO_ELECTRONICO { get; set; }
+        public bool TARJETA_ACTICA { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CARRITO_COMPRAS> CARRITO_COMPRAS { get; set; }
         public virtual USUARIOS USUARIOS { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CARRITO_COMPRAS1> CARRITO_COMPRAS { get; set; }
     }
 }
