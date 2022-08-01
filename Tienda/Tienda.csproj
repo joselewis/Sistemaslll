@@ -84,7 +84,6 @@
     <Content Include="ImgMantenimiento\nuevo.png" />
     <Content Include="ImgPerfiles\Gato.jpg" />
     <Content Include="ImgPerfiles\sweet_black_cat_20210729_0.png" />
-    <Content Include="ImgProductos\Computadoras\6335589cv16d.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Login\css\bootstrap.min.css" />
     <Content Include="Login\css\bootstrap\mixins\_border-radius.css" />
@@ -116,7 +115,9 @@
     <Content Include="PaginaPrincipal.aspx" />
     <Content Include="PerfilAdministrador.aspx" />
     <Content Include="PerfilUsuario.aspx" />
+    <Content Include="ProductoEspecifico.aspx" />
     <Content Include="Productos.aspx" />
+    <Content Include="Productos\ProductoEspecifico\CssProductoEspecifico.css" />
     <Content Include="Productos\ProductosCss.css" />
     <Content Include="Productos\ProductosJS.js" />
     <Content Include="RegistrarAdministrador.aspx" />
@@ -201,6 +202,13 @@
     </Compile>
     <Compile Include="PerfilUsuario.aspx.designer.cs">
       <DependentUpon>PerfilUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProductoEspecifico.aspx.cs">
+      <DependentUpon>ProductoEspecifico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductoEspecifico.aspx.designer.cs">
+      <DependentUpon>ProductoEspecifico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>

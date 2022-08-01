@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -165,5 +166,32 @@ namespace Tienda
         {
 
         }
+
+        protected void ButtonExportarUsuarioExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Response.Clear();
+                Response.Buffer = true;
+                Response.ContentType = "application/ms-excel";
+                Response.AddHeader("content-disposition", "attachment; filename = Usuarios.xls");
+                Response.Charset = "";
+                StringWriter sw = new StringWriter();
+                HtmlTextWriter htw = new HtmlTextWriter(sw);
+                GridUsuarios.RenderControl(htw);
+                Response.Output.Write(sw.ToString());
+                Response.End();
+            }
+            catch (Exception ex)
+            {
+                lblCamposNulos.Text = ex.Message;
+            }
+        }
+
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+
+        }
     }
+
 }

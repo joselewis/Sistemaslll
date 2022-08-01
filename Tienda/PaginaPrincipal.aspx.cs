@@ -6,11 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
+using CapaDatos;
 
 namespace Tienda
 {
     public partial class PaginaPrincipal1 : System.Web.UI.Page
     {
+        int MostrarProductoEspecifico = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             ConsultarImagen();
@@ -41,6 +44,12 @@ namespace Tienda
         }
 
         protected void BotonAgregarAlCarrito_Click(object sender, EventArgs e)
+        {
+            
+            Response.Redirect("/ProductoEspecifico.aspx");
+        }
+
+        protected void Unnamed_Click(object sender, ImageClickEventArgs e)
         {
 
         }

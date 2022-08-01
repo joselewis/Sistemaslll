@@ -12,6 +12,11 @@ namespace Tienda
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            CargarPerfilAdmin();
+        }
+
+        void CargarPerfilAdmin()
+        {
             NombreAdministrador.InnerHtml = "<h6>" + Session["NOMBRE_ADMIN"].ToString() + "</h6>";
             NombreUsuarioAdministrador.InnerHtml = "<h6> " + Session["NOMBRE_USUARIO_ADMIN"].ToString() + " </h6>";
             CorreoAdministrador.InnerHtml = "<h6>" + Session["CORREO_ELECTRONICO_ADMIN"].ToString() + "</h6>";

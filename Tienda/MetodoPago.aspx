@@ -54,7 +54,7 @@
             </ItemTemplate>
         </asp:TemplateField>
 
-        <asp:TemplateField HeaderText="Correo" Visible="False">
+        <asp:TemplateField HeaderText="Correo" Visible="True">
             <EditItemTemplate>
                 <asp:TextBox ID="Txt_Correo_Usuario" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:TextBox>
             </EditItemTemplate>
@@ -65,17 +65,23 @@
                 <asp:Label ID="Label11" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
+        
+        <asp:TemplateField HeaderText="Correo" Visible="False">
+            <EditItemTemplate>
+                <asp:Label ID="LabelCorreoElectronico" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:Label>
+            </EditItemTemplate>
+        </asp:TemplateField>
             
         <asp:TemplateField>
             <EditItemTemplate>
                 <asp:ImageButton runat="server" ID="ImageButton1" class="auto-style1" ImageUrl="ImgMantenimiento/guardar.png" CommandName="Update" Height="20px" ToolTip="Guardar" Width="20px" />
             </EditItemTemplate>
             <FooterTemplate>
-                <asp:ImageButton runat="server" ID="BtnAgregarAdministrador" class="auto-style1" ImageUrl="ImgMantenimiento/nuevo.png" CommandName="AddNew" Height="20px" ToolTip="Nuevo" Width="20px" />
+                <asp:ImageButton runat="server" ID="BtnAgregarPago" class="auto-style1" ImageUrl="ImgMantenimiento/nuevo.png" CommandName="AddNew" Height="20px" ToolTip="Nuevo" Width="20px" />
             </FooterTemplate>
-            <ItemTemplate>
+            <%--<ItemTemplate>
                 <asp:ImageButton runat="server" ID="ImageButton4" class="auto-style1" ImageUrl="ImgMantenimiento/editar.png" CommandName="Edit" Height="20px" ToolTip="Editar" Width="20px"/>
-            </ItemTemplate>
+            </ItemTemplate>--%>
         </asp:TemplateField>
 
         <asp:TemplateField>

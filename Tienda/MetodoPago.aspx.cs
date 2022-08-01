@@ -136,14 +136,10 @@ namespace Tienda
             {
                 METODO_PAGO aux = ContextoDB.METODO_PAGO.Find(objPago.NUMERO_TARJETA);
 
-                if(aux != null)
-                {
-                    ContextoDB.SaveChanges();
-                }
-
-                GridMetodoPago.EditIndex = -1;
+                ContextoDB.METODO_PAGO.Remove(aux);
+                ContextoDB.SaveChanges();
                 CargarMetodoPago();
-                lblCamposNulos.Visible = false;
+                lblCamposNulos.Text = "Eliminado correctamente";
             }
         }
 
