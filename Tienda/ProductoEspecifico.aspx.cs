@@ -31,7 +31,7 @@ namespace Tienda
                 con.Open();
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = "SELECT * FROM PRODUCTOS";
+                cmd.CommandText = "SELECT * FROM PRODUCTOS WHERE CODIGO_PRODUCTO = "  + id;
                 cmd.ExecuteNonQuery();
 
                 DataTable dt = new DataTable();

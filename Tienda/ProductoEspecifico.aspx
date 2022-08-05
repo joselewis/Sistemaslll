@@ -23,6 +23,9 @@
                  <div class="card-body ">
                    <h8>Cantidad: <%#Eval("CANTIDAD_PRODUCTO") %></h8>
                 </div>
+                <div class="card-body ">
+                   <h8>Código del producto: <%#Eval("CODIGO_PRODUCTO") %></h8>
+                </div>
             </center>
         </div>
     </ItemTemplate>

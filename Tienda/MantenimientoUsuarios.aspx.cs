@@ -181,7 +181,8 @@ namespace Tienda
                 GridUsuarios.RenderControl(htw);
                 Response.Output.Write(sw.ToString());
                 Response.End();
-            }
+
+            }    //interop            
             catch (Exception ex)
             {
                 lblCamposNulos.Text = ex.Message;
