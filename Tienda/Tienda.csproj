@@ -116,7 +116,8 @@
     <Content Include="MasterPage\js\scripts.js" />
     <Content Include="MetodoPago.aspx" />
     <Content Include="PaginaPrincipal.aspx" />
-    <Content Include="PaginaPrincipal\PaginaPrincipal.css" />
+    <Content Include="PaginaPrincipal\carousel.css" />
+    <Content Include="PaginaPrincipal\carousel.rtl.css" />
     <Content Include="PerfilAdministrador.aspx" />
     <Content Include="PerfilUsuario.aspx" />
     <Content Include="ProductoEspecifico.aspx" />
@@ -125,6 +126,8 @@
     <Content Include="Productos\ProductosCss.css" />
     <Content Include="Productos\ProductosJS.js" />
     <Content Include="RegistrarAdministrador.aspx" />
+    <Content Include="RegistrarProducto\form-validation.css" />
+    <Content Include="RegistrarProducto\form-validation.js" />
     <Content Include="RegistrarUsuario.aspx" />
     <Content Include="RegistroProductos.aspx" />
     <Content Include="Registro\RegistroExitoso\Registro_Exitoso_Css.css" />

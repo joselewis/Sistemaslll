@@ -45,6 +45,7 @@ namespace Tienda
             }
             catch(Exception ex)
             {
+                lblCamposPagoNulo.Visible = true;
                 lblCamposPagoNulo.Text = ex.Message;  
             }
         }
@@ -82,6 +83,7 @@ namespace Tienda
             }
             catch(Exception ex)
             {
+                lblCamposPagoNulo.Visible = true;
                 lblCamposPagoNulo.Text = ex.Message;
             }
         }
@@ -97,6 +99,7 @@ namespace Tienda
             }
             catch(Exception ex)
             {
+                lblCamposPagoNulo.Visible = true;
                 lblCamposPagoNulo.Text = "Complete los campos solocitados " + ex.Message;
             }
                         
