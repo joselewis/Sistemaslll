@@ -53,5 +53,10 @@ namespace Tienda
                 (e.Row.FindControl("Image1") as Image).ImageUrl = imageUrl;
             }
         }
+
+        protected void BotonAnnadirCarrito_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/CarritoCompras.aspx");
+        }
     }
 }
