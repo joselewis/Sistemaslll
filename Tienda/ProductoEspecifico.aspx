@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaPrincipal.Master" AutoEventWireup="true" CodeBehind="ProductoEspecifico.aspx.cs" Inherits="Tienda.ProductoEspefico" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/PaginaPrincipal.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="ProductoEspecifico.aspx.cs" Inherits="Tienda.ProductoEspefico" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="Productos/ProductoEspecifico/CssProductoEspecifico.css" rel="stylesheet" />
 </asp:Content>
@@ -27,15 +27,39 @@
 				<div class="price">
 					₡ <span><h7>Precio: <%#Eval("PRECIO_PRODUCTO")%></h7></span>
 				</div>
+				<div class="price">
+					<input ID="CajaNueva" text="hola"></input>
+				</div>
 				<asp:Button runat="server" ID="BotonAnnadirCarrito" OnClick="BotonAnnadirCarrito_Click" Text="Añadir al carrito" class="buy--btn" />
+				
+				<div class="product__info">
+				<br />
+				Categorias:<a href="CategoriaProducto.aspx?tipo=<%#Eval("TIPO_PRODUCTO")%>">
+								<a href="CategoriaProducto.aspx?tipo=<%#Eval("TIPO_PRODUCTO")%>"><%#Eval("TIPO_PRODUCTO")%></a>
+				           </a>
+				</div>
+				<%--<a> , </a><span><a href="PaginaPrincipal.aspx?marca"<%#Eval("MARCA")%>></a></span>--%>
 			</div>
 		</section>
 	</ItemTemplate>
 </asp:Repeater>
+<center>
+	<asp:TextBox runat="server" ID="CajaCantidadProducto" Width="32px"></asp:TextBox>
+</center>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 <asp:Label ID="lblError" runat="server" ForeColor="Lime" Text="Error" Visible="False"></asp:Label>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 </asp:Content>

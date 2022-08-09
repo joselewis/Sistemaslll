@@ -53,10 +53,13 @@
     <Compile Include="ADMINISTRADORES.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
-    <Compile Include="CARRITO_COMPRAS1.cs">
+    <Compile Include="CARRITO.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
+    <Compile Include="DETALLE_ORDEN.cs">
+      <DependentUpon>ModeloTienda.tt</DependentUpon>
+    </Compile>
     <Compile Include="METODO_PAGO.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
@@ -74,6 +77,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModeloTienda.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="ORDER_COMPRA.cs">
+      <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCTOS.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>

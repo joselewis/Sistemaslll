@@ -57,7 +57,7 @@ namespace Tienda
                 using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
                 {
                     string CorreoUsuario = (string)Page.Session["CORREO_ELECTRONICO"];
-
+                    
                     var ListadoMetodoPago = ContextoDB.METODO_PAGO.Where(s => s.TARJETA_ACTICA == true && s.CORREO_ELECTRONICO == CorreoUsuario).ToList();
 
                     if (ListadoMetodoPago.Count > 0)
@@ -101,8 +101,7 @@ namespace Tienda
             {
                 lblCamposPagoNulo.Visible = true;
                 lblCamposPagoNulo.Text = "Complete los campos solocitados " + ex.Message;
-            }
-                        
+            }                
         }
 
         protected void IngresarMetodoPago_Click(object sender, EventArgs e)

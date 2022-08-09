@@ -24,6 +24,15 @@ namespace Tienda
         protected global::System.Web.UI.WebControls.Repeater d1;
 
         /// <summary>
+        /// Control CajaCantidadProducto.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CajaCantidadProducto;
+
+        /// <summary>
         /// Control lblError.
         /// </summary>
         /// <remarks>

@@ -18,7 +18,8 @@ namespace CapaDatos
         public USUARIOS()
         {
             this.METODO_PAGO = new HashSet<METODO_PAGO>();
-            this.CARRITO_COMPRAS1 = new HashSet<CARRITO_COMPRAS1>();
+            this.ORDER_COMPRA = new HashSet<ORDER_COMPRA>();
+            this.CARRITO = new HashSet<CARRITO>();
         }
     
         public int ID_USUARIO { get; set; }
@@ -34,6 +35,8 @@ namespace CapaDatos
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<METODO_PAGO> METODO_PAGO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CARRITO_COMPRAS1> CARRITO_COMPRAS1 { get; set; }
+        public virtual ICollection<ORDER_COMPRA> ORDER_COMPRA { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CARRITO> CARRITO { get; set; }
     }
 }

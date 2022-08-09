@@ -26,9 +26,11 @@ namespace CapaDatos
         }
     
         public virtual DbSet<ADMINISTRADORES> ADMINISTRADORES { get; set; }
+        public virtual DbSet<DETALLE_ORDEN> DETALLE_ORDEN { get; set; }
+        public virtual DbSet<METODO_PAGO> METODO_PAGO { get; set; }
+        public virtual DbSet<ORDER_COMPRA> ORDER_COMPRA { get; set; }
         public virtual DbSet<PRODUCTOS> PRODUCTOS { get; set; }
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
-        public virtual DbSet<METODO_PAGO> METODO_PAGO { get; set; }
-        public virtual DbSet<CARRITO_COMPRAS1> CARRITO_COMPRAS1Set { get; set; }
+        public virtual DbSet<CARRITO> CARRITO { get; set; }
     }
 }

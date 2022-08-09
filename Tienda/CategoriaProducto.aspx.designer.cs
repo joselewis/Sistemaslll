@@ -11,25 +11,16 @@ namespace Tienda
 {
 
 
-    public partial class CarritoCompras
+    public partial class CategoriaProducto
     {
 
         /// <summary>
-        /// Control GridCarritoCompras.
+        /// Control d2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridCarritoCompras;
-
-        /// <summary>
-        /// Control lblCamposPagoNulo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblCamposPagoNulo;
+        protected global::System.Web.UI.WebControls.Repeater d2;
     }
 }

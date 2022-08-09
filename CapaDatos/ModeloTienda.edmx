@@ -19,21 +19,25 @@
           <Property Name="CONTRASENNA_ADMIN" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TIPO_USUARIO" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
-        <EntityType Name="CARRITO_COMPRAS">
+        <EntityType Name="CARRITO">
           <Key>
-            <PropertyRef Name="ID_COMPRA" />
-            <PropertyRef Name="DETALLE_COMPRA" />
-            <PropertyRef Name="CORREO_ELECTRONICO" />
-            <PropertyRef Name="CODIGO_PRODUCTO" />
-            <PropertyRef Name="NUMERO_TARJETA" />
+            <PropertyRef Name="ID_CARRITO" />
           </Key>
-          <Property Name="ID_COMPRA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="DETALLE_COMPRA" Type="varchar(max)" Nullable="false" />
+          <Property Name="ID_CARRITO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CODIGO_PRODUCTO" Type="int" Nullable="false" />
-          <Property Name="NUMERO_TARJETA" Type="bigint" Nullable="false" />
+          <Property Name="CANTIDAD" Type="int" Nullable="false" />
+          <Property Name="CARRITO_ACTIVO" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DETALLE_ORDEN">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_ORDEN" />
+          </Key>
+          <Property Name="ID_DETALLE_ORDEN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CANTITDAD_DETALLE" Type="int" Nullable="false" />
+          <Property Name="PRECIO_DETALLE" Type="int" Nullable="false" />
+          <Property Name="ID_ORDEN_COMPRA" Type="int" Nullable="false" />
+          <Property Name="CODIGO_PRODUCTO" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="METODO_PAGO">
           <Key>
@@ -44,6 +48,15 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
           <Property Name="NUMERO_EXPIRA_2" Type="numeric" Precision="2" Scale="0" Nullable="false" />
           <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="TARJETA_ACTICA" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ORDER_COMPRA">
+          <Key>
+            <PropertyRef Name="ID_ORDEN_COMPRA" />
+          </Key>
+          <Property Name="ID_ORDEN_COMPRA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CORREO_ELECTRONICO" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO_TARJETA" Type="bigint" Nullable="false" />
+          <Property Name="COMPRA_TOTAL" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="PRODUCTOS">
           <Key>
@@ -76,36 +89,72 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
         </EntityType>
         <Association Name="FK_CARRITO_USUARIO">
           <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
-          <End Role="CARRITO_COMPRAS" Type="Self.CARRITO_COMPRAS" Multiplicity="*" />
+          <End Role="CARRITO" Type="Self.CARRITO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS">
               <PropertyRef Name="CORREO_ELECTRONICO" />
             </Principal>
-            <Dependent Role="CARRITO_COMPRAS">
+            <Dependent Role="CARRITO">
               <PropertyRef Name="CORREO_ELECTRONICO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_METODOPAGO_CARRITO">
           <End Role="METODO_PAGO" Type="Self.METODO_PAGO" Multiplicity="1" />
-          <End Role="CARRITO_COMPRAS" Type="Self.CARRITO_COMPRAS" Multiplicity="*" />
+          <End Role="ORDER_COMPRA" Type="Self.ORDER_COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="METODO_PAGO">
               <PropertyRef Name="NUMERO_TARJETA" />
             </Principal>
-            <Dependent Role="CARRITO_COMPRAS">
+            <Dependent Role="ORDER_COMPRA">
               <PropertyRef Name="NUMERO_TARJETA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDEN_COMPRA_USUARIO">
+          <End Role="USUARIOS" Type="Self.USUARIOS" Multiplicity="1" />
+          <End Role="ORDER_COMPRA" Type="Self.ORDER_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="CORREO_ELECTRONICO" />
+            </Principal>
+            <Dependent Role="ORDER_COMPRA">
+              <PropertyRef Name="CORREO_ELECTRONICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORDEN_DETALLE_ORDEN">
+          <End Role="ORDER_COMPRA" Type="Self.ORDER_COMPRA" Multiplicity="1" />
+          <End Role="DETALLE_ORDEN" Type="Self.DETALLE_ORDEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER_COMPRA">
+              <PropertyRef Name="ID_ORDEN_COMPRA" />
+            </Principal>
+            <Dependent Role="DETALLE_ORDEN">
+              <PropertyRef Name="ID_ORDEN_COMPRA" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_PRODUCTO_CARRITO">
           <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
-          <End Role="CARRITO_COMPRAS" Type="Self.CARRITO_COMPRAS" Multiplicity="*" />
+          <End Role="CARRITO" Type="Self.CARRITO" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PRODUCTOS">
               <PropertyRef Name="CODIGO_PRODUCTO" />
             </Principal>
-            <Dependent Role="CARRITO_COMPRAS">
+            <Dependent Role="CARRITO">
+              <PropertyRef Name="CODIGO_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_DETALLE_ORDEN">
+          <End Role="PRODUCTOS" Type="Self.PRODUCTOS" Multiplicity="1" />
+          <End Role="DETALLE_ORDEN" Type="Self.DETALLE_ORDEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="CODIGO_PRODUCTO" />
+            </Principal>
+            <Dependent Role="DETALLE_ORDEN">
               <PropertyRef Name="CODIGO_PRODUCTO" />
             </Dependent>
           </ReferentialConstraint>
@@ -124,29 +173,35 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
         </Association>
         <EntityContainer Name="TIENDA_PRODUCTOSModelStoreContainer">
           <EntitySet Name="ADMINISTRADORES" EntityType="Self.ADMINISTRADORES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CARRITO" EntityType="Self.CARRITO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DETALLE_ORDEN" EntityType="Self.DETALLE_ORDEN" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="METODO_PAGO" EntityType="Self.METODO_PAGO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDER_COMPRA" EntityType="Self.ORDER_COMPRA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PRODUCTOS" EntityType="Self.PRODUCTOS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CARRITO_COMPRAS" EntityType="Self.CARRITO_COMPRAS" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CARRITO_COMPRAS].[ID_COMPRA] AS [ID_COMPRA], 
-    [CARRITO_COMPRAS].[DETALLE_COMPRA] AS [DETALLE_COMPRA], 
-    [CARRITO_COMPRAS].[CORREO_ELECTRONICO] AS [CORREO_ELECTRONICO], 
-    [CARRITO_COMPRAS].[CODIGO_PRODUCTO] AS [CODIGO_PRODUCTO], 
-    [CARRITO_COMPRAS].[NUMERO_TARJETA] AS [NUMERO_TARJETA]
-    FROM [dbo].[CARRITO_COMPRAS] AS [CARRITO_COMPRAS]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_CARRITO_USUARIO" Association="Self.FK_CARRITO_USUARIO">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="CARRITO_COMPRAS" EntitySet="CARRITO_COMPRAS" />
+            <End Role="CARRITO" EntitySet="CARRITO" />
           </AssociationSet>
           <AssociationSet Name="FK_METODOPAGO_CARRITO" Association="Self.FK_METODOPAGO_CARRITO">
             <End Role="METODO_PAGO" EntitySet="METODO_PAGO" />
-            <End Role="CARRITO_COMPRAS" EntitySet="CARRITO_COMPRAS" />
+            <End Role="ORDER_COMPRA" EntitySet="ORDER_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDEN_COMPRA_USUARIO" Association="Self.FK_ORDEN_COMPRA_USUARIO">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="ORDER_COMPRA" EntitySet="ORDER_COMPRA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORDEN_DETALLE_ORDEN" Association="Self.FK_ORDEN_DETALLE_ORDEN">
+            <End Role="ORDER_COMPRA" EntitySet="ORDER_COMPRA" />
+            <End Role="DETALLE_ORDEN" EntitySet="DETALLE_ORDEN" />
           </AssociationSet>
           <AssociationSet Name="FK_PRODUCTO_CARRITO" Association="Self.FK_PRODUCTO_CARRITO">
             <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
-            <End Role="CARRITO_COMPRAS" EntitySet="CARRITO_COMPRAS" />
+            <End Role="CARRITO" EntitySet="CARRITO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_DETALLE_ORDEN" Association="Self.FK_PRODUCTO_DETALLE_ORDEN">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="DETALLE_ORDEN" EntitySet="DETALLE_ORDEN" />
           </AssociationSet>
           <AssociationSet Name="FK_USUARIO_TARJETA" Association="Self.FK_USUARIO_TARJETA">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
@@ -159,27 +214,41 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
       <Schema Namespace="TIENDA_PRODUCTOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="TIENDA_PRODUCTOSEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ADMINISTRADORES" EntityType="TIENDA_PRODUCTOSModel.ADMINISTRADORES" />
+          <EntitySet Name="DETALLE_ORDEN" EntityType="TIENDA_PRODUCTOSModel.DETALLE_ORDEN" />
+          <EntitySet Name="METODO_PAGO" EntityType="TIENDA_PRODUCTOSModel.METODO_PAGO" />
+          <EntitySet Name="ORDER_COMPRA" EntityType="TIENDA_PRODUCTOSModel.ORDER_COMPRA" />
           <EntitySet Name="PRODUCTOS" EntityType="TIENDA_PRODUCTOSModel.PRODUCTOS" />
           <EntitySet Name="USUARIOS" EntityType="TIENDA_PRODUCTOSModel.USUARIOS" />
-          <EntitySet Name="METODO_PAGO" EntityType="TIENDA_PRODUCTOSModel.METODO_PAGO" />
+          <AssociationSet Name="FK_ORDEN_DETALLE_ORDEN" Association="TIENDA_PRODUCTOSModel.FK_ORDEN_DETALLE_ORDEN">
+            <End Role="ORDER_COMPRA" EntitySet="ORDER_COMPRA" />
+            <End Role="DETALLE_ORDEN" EntitySet="DETALLE_ORDEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_DETALLE_ORDEN" Association="TIENDA_PRODUCTOSModel.FK_PRODUCTO_DETALLE_ORDEN">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="DETALLE_ORDEN" EntitySet="DETALLE_ORDEN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_METODOPAGO_CARRITO" Association="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO">
+            <End Role="METODO_PAGO" EntitySet="METODO_PAGO" />
+            <End Role="ORDER_COMPRA" EntitySet="ORDER_COMPRA" />
+          </AssociationSet>
           <AssociationSet Name="FK_USUARIO_TARJETA" Association="TIENDA_PRODUCTOSModel.FK_USUARIO_TARJETA">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
             <End Role="METODO_PAGO" EntitySet="METODO_PAGO" />
           </AssociationSet>
-          <EntitySet Name="CARRITO_COMPRAS1Set" EntityType="TIENDA_PRODUCTOSModel.CARRITO_COMPRAS1" />
-          <AssociationSet Name="FK_METODOPAGO_CARRITO" Association="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO">
-            <End Role="METODO_PAGO" EntitySet="METODO_PAGO" />
-            <End Role="CARRITO_COMPRAS1" EntitySet="CARRITO_COMPRAS1Set" />
-          </AssociationSet>
-          <AssociationSet Name="FK_PRODUCTO_CARRITO1" Association="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO1">
-            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
-            <End Role="CARRITO_COMPRAS1" EntitySet="CARRITO_COMPRAS1Set" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CARRITO_USUARIO1" Association="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO1">
+          <AssociationSet Name="FK_ORDEN_COMPRA_USUARIO" Association="TIENDA_PRODUCTOSModel.FK_ORDEN_COMPRA_USUARIO">
             <End Role="USUARIOS" EntitySet="USUARIOS" />
-            <End Role="CARRITO_COMPRAS1" EntitySet="CARRITO_COMPRAS1Set" />
+            <End Role="ORDER_COMPRA" EntitySet="ORDER_COMPRA" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="CARRITO" EntityType="TIENDA_PRODUCTOSModel.CARRITO" />
+          <AssociationSet Name="FK_CARRITO_USUARIO" Association="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO">
+            <End Role="USUARIOS" EntitySet="USUARIOS" />
+            <End Role="CARRITO" EntitySet="CARRITO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PRODUCTO_CARRITO" Association="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO">
+            <End Role="PRODUCTOS" EntitySet="PRODUCTOS" />
+            <End Role="CARRITO" EntitySet="CARRITO" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="ADMINISTRADORES">
           <Key>
             <PropertyRef Name="CORREO_ELECTRONICO_ADMIN" />
@@ -193,6 +262,42 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
           <Property Name="TELEFONO_ADMIN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="CONTRASENNA_ADMIN" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TIPO_USUARIO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DETALLE_ORDEN">
+          <Key>
+            <PropertyRef Name="ID_DETALLE_ORDEN" />
+          </Key>
+          <Property Name="ID_DETALLE_ORDEN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CANTITDAD_DETALLE" Type="Int32" Nullable="false" />
+          <Property Name="PRECIO_DETALLE" Type="Int32" Nullable="false" />
+          <Property Name="ID_ORDEN_COMPRA" Type="Int32" Nullable="false" />
+          <Property Name="CODIGO_PRODUCTO" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ORDER_COMPRA" Relationship="TIENDA_PRODUCTOSModel.FK_ORDEN_DETALLE_ORDEN" FromRole="DETALLE_ORDEN" ToRole="ORDER_COMPRA" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="TIENDA_PRODUCTOSModel.FK_PRODUCTO_DETALLE_ORDEN" FromRole="DETALLE_ORDEN" ToRole="PRODUCTOS" />
+        </EntityType>
+        <EntityType Name="METODO_PAGO">
+          <Key>
+            <PropertyRef Name="NUMERO_TARJETA" />
+          </Key>
+          <Property Name="NUMERO_TARJETA" Type="Int64" Nullable="false" />
+          <Property Name="NUMERO_EXPIRA_1" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="NUMERO_EXPIRA_2" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TARJETA_ACTICA" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ORDER_COMPRA" Relationship="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO" FromRole="METODO_PAGO" ToRole="ORDER_COMPRA" />
+          <NavigationProperty Name="USUARIOS" Relationship="TIENDA_PRODUCTOSModel.FK_USUARIO_TARJETA" FromRole="METODO_PAGO" ToRole="USUARIOS" />
+        </EntityType>
+        <EntityType Name="ORDER_COMPRA">
+          <Key>
+            <PropertyRef Name="ID_ORDEN_COMPRA" />
+          </Key>
+          <Property Name="ID_ORDEN_COMPRA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_TARJETA" Type="Int64" Nullable="false" />
+          <Property Name="COMPRA_TOTAL" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DETALLE_ORDEN" Relationship="TIENDA_PRODUCTOSModel.FK_ORDEN_DETALLE_ORDEN" FromRole="ORDER_COMPRA" ToRole="DETALLE_ORDEN" />
+          <NavigationProperty Name="METODO_PAGO" Relationship="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO" FromRole="ORDER_COMPRA" ToRole="METODO_PAGO" />
+          <NavigationProperty Name="USUARIOS" Relationship="TIENDA_PRODUCTOSModel.FK_ORDEN_COMPRA_USUARIO" FromRole="ORDER_COMPRA" ToRole="USUARIOS" />
         </EntityType>
         <EntityType Name="PRODUCTOS">
           <Key>
@@ -208,7 +313,8 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
           <Property Name="IMAGEN" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="MARCA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PRODUCTO_ACTIVO" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="CARRITO_COMPRAS1" Relationship="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO1" FromRole="PRODUCTOS" ToRole="CARRITO_COMPRAS1" />
+          <NavigationProperty Name="DETALLE_ORDEN" Relationship="TIENDA_PRODUCTOSModel.FK_PRODUCTO_DETALLE_ORDEN" FromRole="PRODUCTOS" ToRole="DETALLE_ORDEN" />
+          <NavigationProperty Name="CARRITO" Relationship="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO" FromRole="PRODUCTOS" ToRole="CARRITO" />
         </EntityType>
         <EntityType Name="USUARIOS">
           <Key>
@@ -224,20 +330,45 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
           <Property Name="CONTRASENNA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="TIPO_USUARIO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="METODO_PAGO" Relationship="TIENDA_PRODUCTOSModel.FK_USUARIO_TARJETA" FromRole="USUARIOS" ToRole="METODO_PAGO" />
-          <NavigationProperty Name="CARRITO_COMPRAS1" Relationship="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO1" FromRole="USUARIOS" ToRole="CARRITO_COMPRAS1" />
+          <NavigationProperty Name="ORDER_COMPRA" Relationship="TIENDA_PRODUCTOSModel.FK_ORDEN_COMPRA_USUARIO" FromRole="USUARIOS" ToRole="ORDER_COMPRA" />
+          <NavigationProperty Name="CARRITO" Relationship="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO" FromRole="USUARIOS" ToRole="CARRITO" />
         </EntityType>
-        <EntityType Name="METODO_PAGO">
-          <Key>
-            <PropertyRef Name="NUMERO_TARJETA" />
-          </Key>
-          <Property Name="NUMERO_TARJETA" Type="Int64" Nullable="false" />
-          <Property Name="NUMERO_EXPIRA_1" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
-          <Property Name="NUMERO_EXPIRA_2" Type="Decimal" Nullable="false" Precision="2" Scale="0" />
-          <Property Name="CORREO_ELECTRONICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TARJETA_ACTICA" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="USUARIOS" Relationship="TIENDA_PRODUCTOSModel.FK_USUARIO_TARJETA" FromRole="METODO_PAGO" ToRole="USUARIOS" />
-          <NavigationProperty Name="CARRITO_COMPRAS" Relationship="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO" FromRole="METODO_PAGO" ToRole="CARRITO_COMPRAS1" />
-        </EntityType>
+        <Association Name="FK_ORDEN_DETALLE_ORDEN">
+          <End Type="TIENDA_PRODUCTOSModel.ORDER_COMPRA" Role="ORDER_COMPRA" Multiplicity="1" />
+          <End Type="TIENDA_PRODUCTOSModel.DETALLE_ORDEN" Role="DETALLE_ORDEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDER_COMPRA">
+              <PropertyRef Name="ID_ORDEN_COMPRA" />
+            </Principal>
+            <Dependent Role="DETALLE_ORDEN">
+              <PropertyRef Name="ID_ORDEN_COMPRA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_DETALLE_ORDEN">
+          <End Type="TIENDA_PRODUCTOSModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="1" />
+          <End Type="TIENDA_PRODUCTOSModel.DETALLE_ORDEN" Role="DETALLE_ORDEN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="CODIGO_PRODUCTO" />
+            </Principal>
+            <Dependent Role="DETALLE_ORDEN">
+              <PropertyRef Name="CODIGO_PRODUCTO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_METODOPAGO_CARRITO">
+          <End Type="TIENDA_PRODUCTOSModel.METODO_PAGO" Role="METODO_PAGO" Multiplicity="1" />
+          <End Type="TIENDA_PRODUCTOSModel.ORDER_COMPRA" Role="ORDER_COMPRA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="METODO_PAGO">
+              <PropertyRef Name="NUMERO_TARJETA" />
+            </Principal>
+            <Dependent Role="ORDER_COMPRA">
+              <PropertyRef Name="NUMERO_TARJETA" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_USUARIO_TARJETA">
           <End Type="TIENDA_PRODUCTOSModel.USUARIOS" Role="USUARIOS" Multiplicity="1" />
           <End Type="TIENDA_PRODUCTOSModel.METODO_PAGO" Role="METODO_PAGO" Multiplicity="*" />
@@ -250,56 +381,51 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="CARRITO_COMPRAS1">
-          <Key>
-            <PropertyRef Name="ID_COMPRA" />
-            <PropertyRef Name="DETALLE_COMPRA" />
-            <PropertyRef Name="CORREO_ELECTRONICO" />
-            <PropertyRef Name="CODIGO_PRODUCTO" />
-            <PropertyRef Name="NUMERO_TARJETA" />
-          </Key>
-          <Property Name="ID_COMPRA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DETALLE_COMPRA" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="CORREO_ELECTRONICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CODIGO_PRODUCTO" Type="Int32" Nullable="false" />
-          <Property Name="NUMERO_TARJETA" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="METODO_PAGO" Relationship="TIENDA_PRODUCTOSModel.FK_METODOPAGO_CARRITO" FromRole="CARRITO_COMPRAS1" ToRole="METODO_PAGO" />
-          <NavigationProperty Name="PRODUCTOS" Relationship="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO1" FromRole="CARRITO_COMPRAS1" ToRole="PRODUCTOS" />
-          <NavigationProperty Name="USUARIOS" Relationship="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO1" FromRole="CARRITO_COMPRAS1" ToRole="USUARIOS" />
-        </EntityType>
-        <Association Name="FK_METODOPAGO_CARRITO">
-          <End Type="TIENDA_PRODUCTOSModel.METODO_PAGO" Role="METODO_PAGO" Multiplicity="1" />
-          <End Type="TIENDA_PRODUCTOSModel.CARRITO_COMPRAS1" Role="CARRITO_COMPRAS1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="METODO_PAGO">
-              <PropertyRef Name="NUMERO_TARJETA" />
-            </Principal>
-            <Dependent Role="CARRITO_COMPRAS1">
-              <PropertyRef Name="NUMERO_TARJETA" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_PRODUCTO_CARRITO1">
-          <End Type="TIENDA_PRODUCTOSModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="1" />
-          <End Type="TIENDA_PRODUCTOSModel.CARRITO_COMPRAS1" Role="CARRITO_COMPRAS1" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCTOS">
-              <PropertyRef Name="CODIGO_PRODUCTO" />
-            </Principal>
-            <Dependent Role="CARRITO_COMPRAS1">
-              <PropertyRef Name="CODIGO_PRODUCTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CARRITO_USUARIO1">
+        <Association Name="FK_ORDEN_COMPRA_USUARIO">
           <End Type="TIENDA_PRODUCTOSModel.USUARIOS" Role="USUARIOS" Multiplicity="1" />
-          <End Type="TIENDA_PRODUCTOSModel.CARRITO_COMPRAS1" Role="CARRITO_COMPRAS1" Multiplicity="*" />
+          <End Type="TIENDA_PRODUCTOSModel.ORDER_COMPRA" Role="ORDER_COMPRA" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="USUARIOS">
               <PropertyRef Name="CORREO_ELECTRONICO" />
             </Principal>
-            <Dependent Role="CARRITO_COMPRAS1">
+            <Dependent Role="ORDER_COMPRA">
               <PropertyRef Name="CORREO_ELECTRONICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CARRITO">
+          <Key>
+            <PropertyRef Name="ID_CARRITO" />
+          </Key>
+          <Property Name="ID_CARRITO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CORREO_ELECTRONICO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CODIGO_PRODUCTO" Type="Int32" Nullable="false" />
+          <Property Name="CANTIDAD" Type="Int32" Nullable="false" />
+          <Property Name="CARRITO_ACTIVO" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="USUARIOS" Relationship="TIENDA_PRODUCTOSModel.FK_CARRITO_USUARIO" FromRole="CARRITO" ToRole="USUARIOS" />
+          <NavigationProperty Name="PRODUCTOS" Relationship="TIENDA_PRODUCTOSModel.FK_PRODUCTO_CARRITO" FromRole="CARRITO" ToRole="PRODUCTOS" />
+        </EntityType>
+        <Association Name="FK_CARRITO_USUARIO">
+          <End Type="TIENDA_PRODUCTOSModel.USUARIOS" Role="USUARIOS" Multiplicity="1" />
+          <End Type="TIENDA_PRODUCTOSModel.CARRITO" Role="CARRITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USUARIOS">
+              <PropertyRef Name="CORREO_ELECTRONICO" />
+            </Principal>
+            <Dependent Role="CARRITO">
+              <PropertyRef Name="CORREO_ELECTRONICO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PRODUCTO_CARRITO">
+          <End Type="TIENDA_PRODUCTOSModel.PRODUCTOS" Role="PRODUCTOS" Multiplicity="1" />
+          <End Type="TIENDA_PRODUCTOSModel.CARRITO" Role="CARRITO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTOS">
+              <PropertyRef Name="CODIGO_PRODUCTO" />
+            </Principal>
+            <Dependent Role="CARRITO">
+              <PropertyRef Name="CODIGO_PRODUCTO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -321,6 +447,38 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
                 <ScalarProperty Name="NOMBRE_USUARIO_ADMIN" ColumnName="NOMBRE_USUARIO_ADMIN" />
                 <ScalarProperty Name="CORREO_ELECTRONICO_ADMIN" ColumnName="CORREO_ELECTRONICO_ADMIN" />
                 <ScalarProperty Name="ID_USUARIO_ADMIN" ColumnName="ID_USUARIO_ADMIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DETALLE_ORDEN">
+            <EntityTypeMapping TypeName="TIENDA_PRODUCTOSModel.DETALLE_ORDEN">
+              <MappingFragment StoreEntitySet="DETALLE_ORDEN">
+                <ScalarProperty Name="CODIGO_PRODUCTO" ColumnName="CODIGO_PRODUCTO" />
+                <ScalarProperty Name="ID_ORDEN_COMPRA" ColumnName="ID_ORDEN_COMPRA" />
+                <ScalarProperty Name="PRECIO_DETALLE" ColumnName="PRECIO_DETALLE" />
+                <ScalarProperty Name="CANTITDAD_DETALLE" ColumnName="CANTITDAD_DETALLE" />
+                <ScalarProperty Name="ID_DETALLE_ORDEN" ColumnName="ID_DETALLE_ORDEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="METODO_PAGO">
+            <EntityTypeMapping TypeName="TIENDA_PRODUCTOSModel.METODO_PAGO">
+              <MappingFragment StoreEntitySet="METODO_PAGO">
+                <ScalarProperty Name="TARJETA_ACTICA" ColumnName="TARJETA_ACTICA" />
+                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="NUMERO_EXPIRA_2" ColumnName="NUMERO_EXPIRA_2" />
+                <ScalarProperty Name="NUMERO_EXPIRA_1" ColumnName="NUMERO_EXPIRA_1" />
+                <ScalarProperty Name="NUMERO_TARJETA" ColumnName="NUMERO_TARJETA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDER_COMPRA">
+            <EntityTypeMapping TypeName="TIENDA_PRODUCTOSModel.ORDER_COMPRA">
+              <MappingFragment StoreEntitySet="ORDER_COMPRA">
+                <ScalarProperty Name="COMPRA_TOTAL" ColumnName="COMPRA_TOTAL" />
+                <ScalarProperty Name="NUMERO_TARJETA" ColumnName="NUMERO_TARJETA" />
+                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
+                <ScalarProperty Name="ID_ORDEN_COMPRA" ColumnName="ID_ORDEN_COMPRA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -355,25 +513,14 @@ advertencia 6002: La tabla o vista 'TIENDA_PRODUCTOS.dbo.CARRITO_COMPRAS' no tie
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="METODO_PAGO">
-            <EntityTypeMapping TypeName="TIENDA_PRODUCTOSModel.METODO_PAGO">
-              <MappingFragment StoreEntitySet="METODO_PAGO">
-                <ScalarProperty Name="TARJETA_ACTICA" ColumnName="TARJETA_ACTICA" />
-                <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
-                <ScalarProperty Name="NUMERO_EXPIRA_2" ColumnName="NUMERO_EXPIRA_2" />
-                <ScalarProperty Name="NUMERO_EXPIRA_1" ColumnName="NUMERO_EXPIRA_1" />
-                <ScalarProperty Name="NUMERO_TARJETA" ColumnName="NUMERO_TARJETA" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CARRITO_COMPRAS1Set">
-            <EntityTypeMapping TypeName="TIENDA_PRODUCTOSModel.CARRITO_COMPRAS1">
-              <MappingFragment StoreEntitySet="CARRITO_COMPRAS">
-                <ScalarProperty Name="NUMERO_TARJETA" ColumnName="NUMERO_TARJETA" />
+          <EntitySetMapping Name="CARRITO">
+            <EntityTypeMapping TypeName="TIENDA_PRODUCTOSModel.CARRITO">
+              <MappingFragment StoreEntitySet="CARRITO">
+                <ScalarProperty Name="CARRITO_ACTIVO" ColumnName="CARRITO_ACTIVO" />
+                <ScalarProperty Name="CANTIDAD" ColumnName="CANTIDAD" />
                 <ScalarProperty Name="CODIGO_PRODUCTO" ColumnName="CODIGO_PRODUCTO" />
                 <ScalarProperty Name="CORREO_ELECTRONICO" ColumnName="CORREO_ELECTRONICO" />
-                <ScalarProperty Name="DETALLE_COMPRA" ColumnName="DETALLE_COMPRA" />
-                <ScalarProperty Name="ID_COMPRA" ColumnName="ID_COMPRA" />
+                <ScalarProperty Name="ID_CARRITO" ColumnName="ID_CARRITO" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

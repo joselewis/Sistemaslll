@@ -59,7 +59,7 @@
                 <asp:TextBox ID="Txt_Correo_Usuario" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:TextBox>
             </EditItemTemplate>
             <FooterTemplate>
-                <asp:TextBox ID="txt_Correo_Telefono_Usuario" runat="server"></asp:TextBox>
+                <asp:TextBox ID="txt_Correo_Usuario" runat="server"></asp:TextBox>
             </FooterTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label11" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:Label>
@@ -71,6 +71,20 @@
                 <asp:Label ID="LabelPagoActivo" runat="server" Text='<%# Eval("TARJETA_ACTICA") %>'></asp:Label>
             </EditItemTemplate>
         </asp:TemplateField>
+
+        <%--<asp:TemplateField HeaderText="Nombre" Visible="True">
+            <EditItemTemplate>
+                <asp:TextBox ID="Txt_Nombre_Usuario" runat="server" Text='<%# Eval("NOMBRE_USUARIO") %>'></asp:TextBox>
+            </EditItemTemplate>
+            <FooterTemplate>
+                <asp:TextBox ID="txt_Nombre_Usuario" runat="server"></asp:TextBox>
+            </FooterTemplate>
+            <ItemTemplate>
+                <asp:Label ID="Label11" runat="server" Text='<%# Eval("NOMBRE_USUARIO") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>--%>
+
+
             
         <asp:TemplateField>
             <EditItemTemplate>

@@ -23,16 +23,16 @@ namespace Tienda
             {
                 try
                 {
-                    foreach(var usuario in contextoDB.USUARIOS)
+                    foreach (var usuario in contextoDB.USUARIOS)
                     {
-                        if(usuario.NOMBRE_USUARIO == CajaUsuario.Text && usuario.CONTRASENNA == CajaContrasenna.Text)
+                        if (usuario.NOMBRE_USUARIO == CajaUsuario.Text && usuario.CONTRASENNA == CajaContrasenna.Text)
                         {
                             Page.Session["NOMBRE"] = usuario.NOMBRE + " " + usuario.APELLIDO_1_USUARIO + " " + usuario.APELLIDO_2_USUARIO;
                             Page.Session["NOMBRE_USUARIO"] = usuario.NOMBRE_USUARIO;
                             Page.Session["TIPO_USUARIO"] = usuario.TIPO_USUARIO;
                             Page.Session["CORREO_ELECTRONICO"] = usuario.CORREO_ELECTRONICO;
                             Page.Session["TELEFONO_USUARIO"] = usuario.TELEFONO_USUARIO;
-                            
+
                             credenciales = 1;
                         }
                     }

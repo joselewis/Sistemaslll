@@ -12,22 +12,22 @@ namespace CapaDatos
     using System;
     using System.Collections.Generic;
     
-    public partial class METODO_PAGO
+    public partial class ORDER_COMPRA
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public METODO_PAGO()
+        public ORDER_COMPRA()
         {
-            this.ORDER_COMPRA = new HashSet<ORDER_COMPRA>();
+            this.DETALLE_ORDEN = new HashSet<DETALLE_ORDEN>();
         }
     
-        public long NUMERO_TARJETA { get; set; }
-        public decimal NUMERO_EXPIRA_1 { get; set; }
-        public decimal NUMERO_EXPIRA_2 { get; set; }
+        public int ID_ORDEN_COMPRA { get; set; }
         public string CORREO_ELECTRONICO { get; set; }
-        public bool TARJETA_ACTICA { get; set; }
+        public long NUMERO_TARJETA { get; set; }
+        public int COMPRA_TOTAL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ORDER_COMPRA> ORDER_COMPRA { get; set; }
+        public virtual ICollection<DETALLE_ORDEN> DETALLE_ORDEN { get; set; }
+        public virtual METODO_PAGO METODO_PAGO { get; set; }
         public virtual USUARIOS USUARIOS { get; set; }
     }
 }

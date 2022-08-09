@@ -74,6 +74,7 @@
   <ItemGroup>
     <Content Include="CarritoCompras.aspx" />
     <Content Include="Carrito\CarritoCss.css" />
+    <Content Include="CategoriaProducto.aspx" />
     <Content Include="Global.asax" />
     <Content Include="ImgMantenimiento\cancel2.png" />
     <Content Include="ImgMantenimiento\delete2.png" />
@@ -141,6 +142,13 @@
     </Compile>
     <Compile Include="CarritoCompras.aspx.designer.cs">
       <DependentUpon>CarritoCompras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CategoriaProducto.aspx.cs">
+      <DependentUpon>CategoriaProducto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CategoriaProducto.aspx.designer.cs">
+      <DependentUpon>CategoriaProducto.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
