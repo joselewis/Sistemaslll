@@ -25,6 +25,7 @@ namespace Tienda
             VerProductoEspecifico();         
         }
 
+        #region "Método para ver el detalle del producto"
         void VerProductoEspecifico()
         {
             if (Request.QueryString["id"] == null)
@@ -50,7 +51,9 @@ namespace Tienda
                 con.Close();
             }
         }
+        #endregion
 
+        #region "Método para mostrar la imagen del producto"
         protected void ImagenEspecifica_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -60,7 +63,9 @@ namespace Tienda
                 (e.Row.FindControl("Image1") as Image).ImageUrl = imageUrl;
             }
         }
+        #endregion
 
+        #region "Método para añadir el producto al carrito"
         void AnnadirProducto()
         {
             try
@@ -70,7 +75,6 @@ namespace Tienda
                     CARRITO oCarrito = new CARRITO();
                     
                     string CorreoUsuario = (string)Page.Session["CORREO_ELECTRONICO"];
-                    //string NombreProducto = Request.QueryString["NOMBRE_PRODUCTO"]; //(string)Page.Session["NOMBRE_PRODUCTO"];
 
                     oCarrito.CORREO_ELECTRONICO = CorreoUsuario;
                     oCarrito.CODIGO_PRODUCTO = Convert.ToInt32(id);
@@ -89,7 +93,9 @@ namespace Tienda
                 lblError.Text = ex.Message;
             }
         }
+        #endregion
 
+        #region "Validación para el ingreso del método de pago"
         void ValidacionIngresoMetodoPago()
         {
             try
@@ -105,11 +111,14 @@ namespace Tienda
                 lblError.Text = ex.Message;
             }
         }
+        #endregion
 
+        #region "LLamado en el botón para los métodos anteriores"
         protected void BotonAnnadirCarrito_Click(object sender, EventArgs e)
         {
             AnnadirProducto();
             ValidacionIngresoMetodoPago();
         }
+        #endregion
     }
 }

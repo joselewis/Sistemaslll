@@ -17,6 +17,7 @@ namespace Tienda
         {
             MenuPrincipal();
 
+            //Filtra el tipo de usuario para redirigirlo según su tipo
             if (!Page.IsPostBack)
             {
                 String Rol = Session["TIPO_USUARIO"].ToString();
@@ -33,6 +34,7 @@ namespace Tienda
             }
         }
 
+        #region "Método para definir el menú dependiendo del tipo de usuario que accede al sistema"
         protected void MenuPrincipal()
         {
             String Rol = Session["TIPO_USUARIO"].ToString();
@@ -115,6 +117,7 @@ namespace Tienda
 
             Titulo_Admin.InnerHtml += LinksMenuPrincipal;
         }
+        #endregion
 
         protected void btnBusqueda_Click(object sender, EventArgs e)
         {

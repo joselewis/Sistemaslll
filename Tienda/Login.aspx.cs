@@ -17,6 +17,7 @@ namespace Tienda
            
         }
 
+        #region "Ingreso al sistemas para usuarios normales"
         void IngresarNormal()
         {
             using (TIENDA_PRODUCTOSEntities contextoDB = new TIENDA_PRODUCTOSEntities())
@@ -43,7 +44,10 @@ namespace Tienda
                 }
             }
         }
+        #endregion
 
+
+        #region "Ingreso al sistemas para usuarios administradores"
         void IngresarAdministrador()
         {
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -69,7 +73,9 @@ namespace Tienda
                 }
             }
         }
+        #endregion
 
+        #region "Validación del usuario"
         void Validacion()
         {
             if (credenciales == 1)
@@ -92,12 +98,15 @@ namespace Tienda
                 ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "sr1", "Swal.fire('Credenciales Incorrectos, intente de nuevo.')", true);
             }
         }
+        #endregion
 
+        #region "Llamado a los métodos anteriores"
         protected void BotonIniciarSesion_Click(object sender, EventArgs e)
         {
             IngresarNormal();
             IngresarAdministrador();
             Validacion();
         }
+        #endregion
     }
 }

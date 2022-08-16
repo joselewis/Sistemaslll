@@ -19,6 +19,7 @@ namespace Tienda
             }
         }
 
+        #region "Método encargado de mostrar los datos en un gridview"
         void CargarAdministradores()
         {
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -44,7 +45,9 @@ namespace Tienda
                 }
             }
         }
+        #endregion
 
+        #region "Validación del footer en el gridview"
         int Validar()
         {
             int respuesta = 0;
@@ -59,7 +62,9 @@ namespace Tienda
             }
             return (respuesta);
         }
+        #endregion
 
+        #region "Métodos CRUD del gridview"
         protected void GridAdmin_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -67,12 +72,14 @@ namespace Tienda
 
         protected void GridAdmin_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            //Permite editar los datos de las filas en el gridview
             GridAdministrador.EditIndex = e.NewEditIndex;
             CargarAdministradores();
         }
 
         protected void GridAdmin_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            //Permite eliminar el administrador por su correo electrónico
             String AdministradorId = Convert.ToString(GridAdministrador.DataKeys[e.RowIndex].Value);
 
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -89,6 +96,7 @@ namespace Tienda
         {
             int ValidarFooter = Validar();
 
+            //Permite añadir un nuevo registro
             if(e.CommandName.Equals("AddNew") && ValidarFooter == 1)
             {
                 ADMINISTRADORES objAdministrador = new ADMINISTRADORES();
@@ -115,12 +123,14 @@ namespace Tienda
 
         protected void GridAdmin_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
+            //Cancela la edición en el gridview
             GridAdministrador.EditIndex = -1;
             CargarAdministradores();
         }
 
         protected void GridAdmin_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            //Permite actualizar casi cualquier campo del gridview administradores
             GridViewRow row = GridAdministrador.Rows[e.RowIndex];
 
             TextBox txtIdAdmin = row.FindControl("Txt_IdAdministrador") as TextBox;
@@ -168,6 +178,7 @@ namespace Tienda
 
         protected void ButtonExportarAdminExcel_Click(object sender, EventArgs e)
         {
+            //Exporta los datos del gridview administradores en formato excel
             try
             {
                 Response.Clear();
@@ -191,5 +202,6 @@ namespace Tienda
         {
 
         }
+        #endregion
     }
 }

@@ -19,6 +19,7 @@ namespace Tienda
             }
         }
 
+        #region "Método encargado de cargar los productos disponibles en un gridview"
         void CargarProductos()
         {
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -44,7 +45,9 @@ namespace Tienda
                 }
             }
         }
+        #endregion
 
+        #region "Método para validar el footer de productos" 
         int Validar()
         {
             int respuesta = 0;
@@ -58,9 +61,12 @@ namespace Tienda
             }
             return (respuesta);
         }
+        #endregion
 
+        #region "Métodos del CRUD productos"
         protected void GridProducto_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
+            //Permite cancelar la edición
             GridProductos.EditIndex = -1;
             CargarProductos();
         }
@@ -69,6 +75,7 @@ namespace Tienda
         {
             int ValidarFooter = Validar();
 
+            //Permite ingresar un nuevo registro mediante el footer del gridview
             if (e.CommandName.Equals("AddNew") && ValidarFooter == 1)
             {
                 PRODUCTOS objProducto = new PRODUCTOS();
@@ -95,6 +102,7 @@ namespace Tienda
 
         protected void GridProducto_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            //Permite eliminar un producto
             int Productos = Convert.ToInt32(GridProductos.DataKeys[e.RowIndex].Value);
 
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -109,12 +117,14 @@ namespace Tienda
 
         protected void GridProducto_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            
             GridProductos.EditIndex = e.NewEditIndex;
             CargarProductos();
         }
 
         protected void GridProducto_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            //Permite actualizar casi cualquier campo del gridview productos
             GridViewRow row = GridProductos.Rows[e.RowIndex];
 
             TextBox txtIdProducto = row.FindControl("Txt_IdProducto") as TextBox;
@@ -167,6 +177,7 @@ namespace Tienda
 
         protected void ButtonExportarExcel_Click(object sender, EventArgs e)
         {
+            //Exporta los datos del gridview productos en formato excel
             try
             {
                 Response.Clear();
@@ -190,5 +201,6 @@ namespace Tienda
         {
             
         }
+        #endregion
     }
 }

@@ -16,6 +16,8 @@ namespace Tienda
         {
 
         }
+
+        #region "Método para la creación de un usuario"
         void Registrar_Usuario()
         {
             using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -36,7 +38,9 @@ namespace Tienda
                 Creacion_Cuenta = 1;
             }
         }
+        #endregion
 
+        #region "Método para validar la creación del usuario"
         void ValidarCreacionCuenta()
         {
             if (Creacion_Cuenta == 1)
@@ -48,11 +52,14 @@ namespace Tienda
                 ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "ClientScript", "alert('Error al crear la cuenta')", true);
             }
         }
+        #endregion
 
+        #region "Llamado a los métodos anteriores"
         protected void BotonRegistrarUsuario_Click(object sender, EventArgs e)
         {
             Registrar_Usuario();
             ValidarCreacionCuenta();
         }
+        #endregion 
     }
 }

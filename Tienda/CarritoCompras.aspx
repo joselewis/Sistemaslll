@@ -13,54 +13,36 @@
     OnRowDeleting="GridCarrito_RowDeleting" 
     OnRowEditing="GridCarrito_RowEditing" 
     nRowUpdating="GridUsuario_RowUpdating" 
-    Width="684px" 
-    DataKeyNames="ID_CARRITO, CODIGO_PRODUCTO" 
+    Width="840px" 
+    DataKeyNames="ID_CARRITO , CODIGO_PRODUCTO" 
     OnSelectedIndexChanged="GridCarrito_SelectedIndexChanged" 
     Height="126px" OnRowUpdating="GridCarrito_RowUpdating" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
     <Columns >
         <asp:TemplateField HeaderText="Número compra">
-            <EditItemTemplate>
-                <asp:TextBox ID="Txt_Id_Carrito" runat="server" Text='<%# Eval("ID_CARRITO") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <FooterTemplate>
-                <asp:TextBox ID="txt_footer_Id_Carrito" runat="server"></asp:TextBox>
-            </FooterTemplate>
             <ItemTemplate>
                 <asp:Label ID="LabelId_Carrito" runat="server" Text='<%# Eval("ID_CARRITO") %>'></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
 
         <asp:TemplateField HeaderText="Correo">
-            <EditItemTemplate>
-                <asp:TextBox ID="Txt_Correo_Usuario" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <FooterTemplate>
-                <asp:TextBox ID="txt_footer_Correo_Usuario" runat="server"></asp:TextBox>
-            </FooterTemplate>
             <ItemTemplate>
                 <asp:Label ID="LabelCorreo_Usuario" runat="server" Text='<%# Eval("CORREO_ELECTRONICO") %>'></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
 
         <asp:TemplateField HeaderText="Código Producto" Visible="True">
-            <EditItemTemplate>
-                <asp:TextBox ID="Txt_Codigo_Producto" runat="server" Text='<%# Eval("CODIGO_PRODUCTO") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <FooterTemplate>
-                <asp:TextBox ID="txt_Codigo_Producto" runat="server"></asp:TextBox>
-            </FooterTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label11" runat="server" Text='<%# Eval("CODIGO_PRODUCTO") %>'></asp:Label>
             </ItemTemplate>
         </asp:TemplateField>
 
+        <%--<asp:TemplateField HeaderText="Nombre Producto" Visible="True">
+            <ItemTemplate>
+                <asp:Label ID="Label11" runat="server" Text='<%# Eval("NOMBRE_PRODUCTO") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>--%>
+
         <asp:TemplateField HeaderText="Cantidad" Visible="True">
-            <EditItemTemplate>
-                <asp:TextBox ID="Txt_Cantidad" runat="server" Text='<%# Eval("CANTIDAD") %>'></asp:TextBox>
-            </EditItemTemplate>
-            <FooterTemplate>
-                <asp:TextBox ID="txt_Cantidad" runat="server"></asp:TextBox>
-            </FooterTemplate>
             <ItemTemplate>
                 <asp:Label ID="Label15" runat="server" Text='<%# Eval("CANTIDAD") %>'></asp:Label>
             </ItemTemplate>
@@ -73,18 +55,6 @@
         </asp:TemplateField>
             
         <asp:TemplateField>
-            <EditItemTemplate>
-                <asp:ImageButton runat="server" ID="ImageButton1" class="auto-style1" ImageUrl="ImgMantenimiento/guardar.png" CommandName="Update" Height="20px" ToolTip="Guardar" Width="20px" />
-            </EditItemTemplate>
-            <FooterTemplate>
-                <asp:ImageButton runat="server" ID="BtnAgregarPago" class="auto-style1" ImageUrl="ImgMantenimiento/nuevo.png" CommandName="AddNew" Height="20px" ToolTip="Nuevo" Width="20px" />
-            </FooterTemplate>
-        </asp:TemplateField>
-
-        <asp:TemplateField>
-            <EditItemTemplate>
-                <asp:ImageButton runat="server" ID="ImageButton3" class="auto-style1" ImageUrl="ImgMantenimiento/cancel2.png" CommandName="Cancel" Height="20px" ToolTip="Cancelar" Width="20px"/>
-            </EditItemTemplate>
             <ItemTemplate>
                 <asp:ImageButton runat="server"  ID="ImageButton5" class="auto-style1" ImageUrl="ImgMantenimiento/delete2.png" CommandName="Delete" Height="20px" ToolTip="Borrar" Width="20px" />
             </ItemTemplate>
@@ -99,5 +69,27 @@
         <SortedDescendingCellStyle BackColor="#E5E5E5" />
         <SortedDescendingHeaderStyle BackColor="#242121" />
 </asp:GridView>
-    <asp:Label ID="lblCamposPagoNulo" runat="server" ForeColor="Lime" Visible="False"></asp:Label>
+    <br />
+    <asp:Label ID="lblCamposPagoNulo" runat="server" ForeColor="Red" Visible="False"></asp:Label>
+<br/>
+<h4>Ingresar un método de pago</h4>
+<br />
+<br />
+<div class="row">
+    <div class="col">
+      <asp:TextBox runat="server" type="text" class="form-control" placeholder="Numéro tarjeta" ID="CajaNumeroTarjeta"></asp:TextBox>
+    </div>
+    <div class="col">
+      <asp:TextBox runat="server" type="text" class="form-control" placeholder="Mes expira" ID="CajaMesTarjeta"></asp:TextBox>
+    </div>
+    <div class="col">
+      <asp:TextBox runat="server" type="text" class="form-control" placeholder="Año expira" ID="CajaAnnoTarjeta"></asp:TextBox>
+    </div>
+    <asp:Label ID="Label1" runat="server" ForeColor="Lime" Visible="False"></asp:Label>
+</div>
+<br />
+<center>
+    <asp:Button runat="server" type="button" class="btn btn-dark" Text="Ingresar método de pago" ID="IngresarMetodoPago" OnClick="IngresarMetodoPago_Click"></asp:Button>
+</center>
+<br />
 </asp:Content>

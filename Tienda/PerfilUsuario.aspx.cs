@@ -15,6 +15,7 @@ namespace Tienda
             CargarPerfilUsuario();
         }
 
+        #region "Muestra la información de la sesión del administrador en su respectivo perfíl"
         void CargarPerfilUsuario()
         {
             Nombre.InnerHtml = "<h6>" + Session["NOMBRE"].ToString() + "</h6>";
@@ -22,10 +23,13 @@ namespace Tienda
             Correo.InnerHtml = "<h6>" + Session["CORREO_ELECTRONICO"].ToString() + "</h6>";
             Telefono.InnerHtml = "<h6>" + Session["TELEFONO_USUARIO"].ToString() + "</h6>";
         }
+        #endregion
 
+        #region "Método para ir a los métodos de pago"
         protected void IrMetodoPago_Click(object sender, EventArgs e)
         {
             Response.Redirect("/MetodoPago.aspx");
         }
+        #endregion
     }
 }

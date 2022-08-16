@@ -10,46 +10,16 @@ namespace Tienda
 {
     public partial class MetodoPago : System.Web.UI.Page
     {
-        int Creacion_Metodo_Pago = 0;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 CargarMetodoPago();
-                ValidacionIngresoMetodoPago();
+                
             }
         }
 
-        void CrearMetodoPago()
-        {
-            try
-            {
-                using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
-                {
-                    METODO_PAGO oMetodoPago = new METODO_PAGO();
-
-                    string CorreoUsuario = (string)Page.Session["CORREO_ELECTRONICO"];
-
-                    oMetodoPago.NUMERO_TARJETA = Convert.ToInt64(CajaNumeroTarjeta.Text);
-                    oMetodoPago.NUMERO_EXPIRA_1 = Convert.ToInt32(CajaMesTarjeta.Text);
-                    oMetodoPago.NUMERO_EXPIRA_2 = Convert.ToInt32(CajaAnnoTarjeta.Text);
-                    oMetodoPago.TARJETA_ACTICA = true;
-                    oMetodoPago.CORREO_ELECTRONICO = CorreoUsuario;
-
-                    ContextoDB.METODO_PAGO.Add(oMetodoPago);
-                    ContextoDB.SaveChanges();
-
-                    Creacion_Metodo_Pago = 1;
-                }
-            }
-            catch(Exception ex)
-            {
-                lblCamposPagoNulo.Visible = true;
-                lblCamposPagoNulo.Text = ex.Message;  
-            }
-        }
-
+        #region "Método encargado de cargar los usuarios disponibles en un gridview"
         void CargarMetodoPago()
         {
             try
@@ -87,29 +57,9 @@ namespace Tienda
                 lblCamposPagoNulo.Text = ex.Message;
             }
         }
+        #endregion
 
-        void ValidacionIngresoMetodoPago()
-        {
-            try
-            {
-                if (Creacion_Metodo_Pago == 1)
-                {
-                    Response.Redirect("/MetodoPago.aspx");
-                }
-            }
-            catch(Exception ex)
-            {
-                lblCamposPagoNulo.Visible = true;
-                lblCamposPagoNulo.Text = "Complete los campos solocitados " + ex.Message;
-            }                
-        }
-
-        protected void IngresarMetodoPago_Click(object sender, EventArgs e)
-        {
-            CrearMetodoPago();
-            ValidacionIngresoMetodoPago();
-        }
-
+        #region "Métodos CRUD del gridview método de pago"
         protected void GridTarjeta_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             
@@ -122,6 +72,7 @@ namespace Tienda
 
         protected void GridTarjeta_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            //Permite eliminar los métodos de pago seleccionado por el usuario
             try
             {
                 METODO_PAGO objPago = new METODO_PAGO();
@@ -161,5 +112,6 @@ namespace Tienda
         {
 
         }
+        #endregion
     }
 }

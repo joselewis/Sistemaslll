@@ -20,6 +20,7 @@ namespace Tienda
 
         }
 
+        #region "Método para registrar un producto"
         void RegistrarProducto()
         {
             try
@@ -49,7 +50,9 @@ namespace Tienda
                 lblAlamacenado.Text = ex.Message;
             }
         }
+        #endregion
 
+        #region "Método para validar el registro del producto"
         void ValidacionIngresoProducto()
         {
             if (ProductoIngresado == 1)
@@ -58,11 +61,14 @@ namespace Tienda
                 Response.Redirect("/MantenimientoProductos.aspx");
             }
         }
+        #endregion
 
+        #region "Llamado a los métodos anteriores"
         protected void Btn_Registar_Producto_Click(object sender, EventArgs e)
         {
             RegistrarProducto();
             ValidacionIngresoProducto();
         }
+        #endregion
     }
 }

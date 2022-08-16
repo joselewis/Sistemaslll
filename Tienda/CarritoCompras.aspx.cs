@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,26 +12,83 @@ namespace Tienda
 {
     public partial class CarritoCompras : System.Web.UI.Page
     {
+        int Creacion_Metodo_Pago = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 MostrarCarrito();
+                //MostrarProducto();
+                ValidacionIngresoMetodoPago();
+                
             }
         }
-        
+
+        #region "Crear método pago"
+        void CrearMetodoPago()
+        {
+            try
+            {   //Abre la conexión a la base de datos
+                using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+                {
+                    METODO_PAGO oMetodoPago = new METODO_PAGO();
+                    
+                    //Le asigna al usuario el método de pago
+                    string CorreoUsuario = (string)Page.Session["CORREO_ELECTRONICO"];
+
+                    //guarda el método de pago del usuario
+                    oMetodoPago.NUMERO_TARJETA = Convert.ToInt64(CajaNumeroTarjeta.Text);
+                    oMetodoPago.NUMERO_EXPIRA_1 = Convert.ToInt32(CajaMesTarjeta.Text);
+                    oMetodoPago.NUMERO_EXPIRA_2 = Convert.ToInt32(CajaAnnoTarjeta.Text);
+                    oMetodoPago.TARJETA_ACTICA = true;
+                    oMetodoPago.CORREO_ELECTRONICO = CorreoUsuario;
+
+                    ContextoDB.METODO_PAGO.Add(oMetodoPago);
+                    ContextoDB.SaveChanges();
+
+                    Creacion_Metodo_Pago = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                lblCamposPagoNulo.Visible = true;
+                lblCamposPagoNulo.Text = ex.Message;
+            }
+        }
+        #endregion
+
+        #region "Validar ingreso del método de pago"
+        void ValidacionIngresoMetodoPago()
+        {
+            try
+            {   //
+                if (Creacion_Metodo_Pago == 1)
+                {
+                    Response.Redirect("/CarritoCompras.aspx");
+                }
+            }
+            catch (Exception ex)
+            {
+                lblCamposPagoNulo.Visible = true;
+                lblCamposPagoNulo.Text = "Complete los campos solocitados " + ex.Message;
+            }
+        }
+        #endregion
+
+        #region "Método para mostrar el carrito"
+
         void MostrarCarrito()
         {
             try
             {
+                //Abre la conexión a la base de datos
                 using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
                 {
+                    // Se obtiene la sesion del usuario
                     string CorreoUsuario = (string)Page.Session["CORREO_ELECTRONICO"];
-                    //int CodigoProducto = (int)Page.Session["CODIGO_PRODUCTO"];
-                    //int CodigoProducto = Convert.ToInt32(Request.QueryString["CODIGO_PRODUCTO"]);
-                    //string NombreProducto = Request.QueryString["NOMBRE_PRODUCTO"];
 
-                    var ListadoCarrito = ContextoDB.CARRITO.Where(s => s.CORREO_ELECTRONICO == CorreoUsuario &&  s.CARRITO_ACTIVO == true).ToList();
+                    var ListadoCarrito = ContextoDB.CARRITO.Where(s => s.CORREO_ELECTRONICO == CorreoUsuario && s.CARRITO_ACTIVO == true).ToList();
 
                     if (ListadoCarrito.Count > 0)
                     {
@@ -40,7 +99,7 @@ namespace Tienda
                     {
                         CARRITO objCarrito = new CARRITO();
                         ListadoCarrito.Add(objCarrito);
-
+                        
                         GridCarritoCompras.DataSource = ListadoCarrito;
                         GridCarritoCompras.DataBind();
                         GridCarritoCompras.Rows[0].Cells.Clear();
@@ -49,7 +108,6 @@ namespace Tienda
                         GridCarritoCompras.Rows[0].Cells[0].Text = "No hay producto añadidos al carrito";
                         GridCarritoCompras.Rows[0].Cells[0].HorizontalAlign = HorizontalAlign.Center;
                     }
-
                     GridCarritoCompras.EditIndex = -1;
                 }
             }
@@ -57,9 +115,11 @@ namespace Tienda
             {
                 lblCamposPagoNulo.Visible = true;
                 lblCamposPagoNulo.Text = ex.Message;
-            }
+            }    
         }
+        #endregion
 
+        #region "Metodos del grid carrito de compras"
         protected void GridCarrito_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
 
@@ -75,12 +135,14 @@ namespace Tienda
 
         }
 
+        // Método que eliminnar el artículo del carrito
         protected void GridCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             try
             {
                 CARRITO objCarrito = new CARRITO();
 
+                // Obtiene la session del usuario
                 string usuario = Request.QueryString["USUARIO"];
 
                 objCarrito.ID_CARRITO = Int32.Parse((GridCarritoCompras.DataKeys[e.RowIndex].Value.ToString()));
@@ -112,5 +174,13 @@ namespace Tienda
         {
 
         }
+
+        protected void IngresarMetodoPago_Click(object sender, EventArgs e)
+        {
+            CrearMetodoPago();
+            ValidacionIngresoMetodoPago();
+        }
+
+        #endregion
     }
 }

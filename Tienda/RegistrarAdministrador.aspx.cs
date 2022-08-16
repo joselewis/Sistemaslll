@@ -17,6 +17,7 @@ namespace Tienda
 
         }
 
+        #region "Método para registar un administrador"
         void Registrar_Administrador()
         {
             using (TIENDA_PRODUCTOSEntities ContextoBD = new TIENDA_PRODUCTOSEntities())
@@ -37,7 +38,9 @@ namespace Tienda
                 Creacion_Cuenta_Admin = 1;
             }
         }
+        #endregion
 
+        #region "Método para validar la creación de la cuenta"
         void ValidarCreacionCuentaAdmin()
         {
             if(Creacion_Cuenta_Admin == 1)
@@ -49,11 +52,14 @@ namespace Tienda
                 ScriptManager.RegisterClientScriptBlock(Page, typeof(Page), "ClientScript", "alert('Error ingresar administrador')", true);
             }
         }
+        #endregion
 
+        #region "Llamada a los métodos anteriores"
         protected void Boton_Ingresar_Admin_Click(object sender, EventArgs e)
         {
             Registrar_Administrador();
             ValidarCreacionCuentaAdmin();
         }
+        #endregion
     }
 }

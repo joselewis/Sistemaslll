@@ -19,6 +19,7 @@ namespace Tienda
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Muestra los productos en la página principal
             if (Request.QueryString["tipo"] == null)
             {
                 Response.Redirect("/PaginaPrincipal.aspx");
@@ -42,6 +43,8 @@ namespace Tienda
                 con.Close();
             }
         }
+
+        #region "Método para mostrar las imagenes de los productos disponibles"
         protected void ImagenEspecifica_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -51,5 +54,6 @@ namespace Tienda
                 (e.Row.FindControl("Image1") as Image).ImageUrl = imageUrl;
             }
         }
+        #endregion
     }
 }

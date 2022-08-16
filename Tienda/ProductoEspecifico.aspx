@@ -28,7 +28,8 @@
 					₡ <span><h7>Precio: <%#Eval("PRECIO_PRODUCTO")%></h7></span>
 				</div>
 				<div class="price">
-					<input ID="CajaNueva" text="hola"></input>
+					<input id="CajaCantidad"/> 
+					<%--<asp:TextBox ID="CajaCantidadProducto"  runat="server"  Text='<%#DataBinder.Eval(Container.DataItem, "SALARY")%>'></asp:TextBox>--%>
 				</div>
 				<asp:Button runat="server" ID="BotonAnnadirCarrito" OnClick="BotonAnnadirCarrito_Click" Text="Añadir al carrito" class="buy--btn" />
 				

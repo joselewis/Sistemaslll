@@ -19,6 +19,7 @@ namespace Tienda
             }
         }
 
+        #region "Método encargado de cargar los usuarios disponibles en un gridview"
         void CargarUsuarios()
         {
             using(TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
@@ -44,7 +45,9 @@ namespace Tienda
                 }
             }            
         }
+        #endregion
 
+        #region "Método para validar el footer de usuarios" 
         int Validar()
         {
             int respuesta = 0;
@@ -59,15 +62,19 @@ namespace Tienda
             }
             return (respuesta);
         }
+        #endregion
 
+        #region "Métodos del CRUD productos"
         protected void GridUsuario_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
+            //Permite cancelar la edición
             GridUsuarios.EditIndex = -1;
             CargarUsuarios();
         }
 
         protected void GridUsuario_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            //Permite ingresar un nuevo registro mediante el footer del gridview
             int ValidarFooter = Validar();
 
             if (e.CommandName.Equals("AddNew") && ValidarFooter == 1)
@@ -96,6 +103,7 @@ namespace Tienda
 
         protected void GridUsuario_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            //Permite eliminar un usuario
             String Usuario = Convert.ToString(GridUsuarios.DataKeys[e.RowIndex].Value);
 
             using (TIENDA_PRODUCTOSEntities ContextoBD = new TIENDA_PRODUCTOSEntities())
@@ -109,13 +117,15 @@ namespace Tienda
         }
 
         protected void GridUsuario_RowEditing(object sender, GridViewEditEventArgs e)
-        {
+        { 
+            //Permite eliminar un producto
             GridUsuarios.EditIndex = e.NewEditIndex;
             CargarUsuarios();
         }
 
         protected void GridUsuario_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            //Permite actualizar los datos de un usuario
             GridViewRow row = GridUsuarios.Rows[e.RowIndex];
 
             TextBox txtIdUsuario = row.FindControl("Txt_IdUsuario") as TextBox;
@@ -169,6 +179,7 @@ namespace Tienda
 
         protected void ButtonExportarUsuarioExcel_Click(object sender, EventArgs e)
         {
+            //Permite exportar los datos del gridview usuarios a formato excel
             try
             {
                 Response.Clear();
@@ -193,6 +204,6 @@ namespace Tienda
         {
 
         }
+        #endregion
     }
-
 }

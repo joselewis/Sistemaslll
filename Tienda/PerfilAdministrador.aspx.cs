@@ -15,6 +15,7 @@ namespace Tienda
             CargarPerfilAdmin();
         }
 
+        #region "Muestra la información de la sesión del administrador en su respectivo perfíl"
         void CargarPerfilAdmin()
         {
             NombreAdministrador.InnerHtml = "<h6>" + Session["NOMBRE_ADMIN"].ToString() + "</h6>";
@@ -22,5 +23,6 @@ namespace Tienda
             CorreoAdministrador.InnerHtml = "<h6>" + Session["CORREO_ELECTRONICO_ADMIN"].ToString() + "</h6>";
             TelefonoAdministrador.InnerHtml = "<h6>" + Session["TELEFONO_ADMIN"].ToString() + "</h6>";
         }
+        #endregion
     }
 }

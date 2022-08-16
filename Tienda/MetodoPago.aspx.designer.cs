@@ -24,33 +24,6 @@ namespace Tienda
         protected global::System.Web.UI.WebControls.GridView GridMetodoPago;
 
         /// <summary>
-        /// Control CajaNumeroTarjeta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CajaNumeroTarjeta;
-
-        /// <summary>
-        /// Control CajaMesTarjeta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CajaMesTarjeta;
-
-        /// <summary>
-        /// Control CajaAnnoTarjeta.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CajaAnnoTarjeta;
-
-        /// <summary>
         /// Control lblCamposPagoNulo.
         /// </summary>
         /// <remarks>
@@ -58,14 +31,5 @@ namespace Tienda
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCamposPagoNulo;
-
-        /// <summary>
-        /// Control IngresarMetodoPago.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button IngresarMetodoPago;
     }
 }

@@ -56,7 +56,6 @@
     <Compile Include="CARRITO.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="DETALLE_ORDEN.cs">
       <DependentUpon>ModeloTienda.tt</DependentUpon>
     </Compile>

@@ -6,7 +6,7 @@
 <h4>Método de pago</h4>
 <br />
 <asp:GridView ID="GridMetodoPago" 
-    runat="server" class="table table-dark table-striped" 
+    runat="server" class="table" 
     AutoGenerateColumns="False"
     OnRowCancelingEdit="GridTarjeta_RowCancelingEdit" 
     OnRowCommand="GridTarjeta_RowCommand"
@@ -16,7 +16,7 @@
     Width="471px" 
     DataKeyNames="NUMERO_TARJETA" 
     OnSelectedIndexChanged="GridTarjeta_SelectedIndexChanged" 
-    Height="126px" OnRowUpdating="GridTarjeta_RowUpdating">
+    Height="126px" OnRowUpdating="GridTarjeta_RowUpdating" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Horizontal">
     <Columns >
         <asp:TemplateField HeaderText="Número Tarjeta">
             <EditItemTemplate>
@@ -107,23 +107,14 @@
             </ItemTemplate>
         </asp:TemplateField>
     </Columns>
+    <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+    <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+    <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+    <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F7F7F7" />
+    <SortedAscendingHeaderStyle BackColor="#4B4B4B" />
+    <SortedDescendingCellStyle BackColor="#E5E5E5" />
+    <SortedDescendingHeaderStyle BackColor="#242121" />
 </asp:GridView>
-</div>
-<div class="row">
-    <div class="col">
-      <asp:TextBox runat="server" type="text" class="form-control" placeholder="Numéro tarjeta" ID="CajaNumeroTarjeta"></asp:TextBox>
-    </div>
-    <div class="col">
-      <asp:TextBox runat="server" type="text" class="form-control" placeholder="Mes expira" ID="CajaMesTarjeta"></asp:TextBox>
-    </div>
-    <div class="col">
-      <asp:TextBox runat="server" type="text" class="form-control" placeholder="Año expira" ID="CajaAnnoTarjeta"></asp:TextBox>
-    </div>
-    <asp:Label ID="lblCamposPagoNulo" runat="server" ForeColor="Lime" Visible="False"></asp:Label>
-</div>
-<br />
-<center>
-    <asp:Button runat="server" type="button" class="btn btn-dark" Text="Ingresar método de pago" ID="IngresarMetodoPago" OnClick="IngresarMetodoPago_Click"></asp:Button>
-</center>
-<br />
+<asp:Label ID="lblCamposPagoNulo" runat="server" ForeColor="Red" Visible="False"></asp:Label>
 </asp:Content>
