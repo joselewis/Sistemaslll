@@ -25,7 +25,7 @@
 					<h8>Cantidad disponible: <%#Eval("CANTIDAD_PRODUCTO")%></h8>
 				</div>
 				<div class="price">
-					₡ <span><h7>Precio: <%#Eval("PRECIO_PRODUCTO")%></h7></span>
+					<span><h7>Precio: ₡<%#Eval("PRECIO_PRODUCTO")%></h7></span>
 				</div>
 				<div class="price">
 					<input id="CajaCantidad"/> 

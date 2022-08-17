@@ -62,11 +62,6 @@
                         <!--<asp:Label ID="txtNombreAdminSesion" Text="" runat="server" />-->
 <!--------------------------------------------------------------------FIN PERFIL USUARIO------------------------------------------------------------------------->
                         <div class="sb-sidenav-menu-heading" ></div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Cuentas
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                             <!------------------------------MENU LATERAL--------------------------------------->
                             <nav class="sb-sidenav-menu-nested nav" runat="server" id="MenuLateral">
@@ -82,31 +77,14 @@
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    Tecnología
+                                    Comics
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                 </a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="Productos.aspx">Computadoras</a>
-                                        <a class="nav-link" href="register.html">Celulares</a>
-                                        <a class="nav-link" href="password.html">Cámaras</a>
+                                        <a class="nav-link" href="Productos.aspx">Marvel</a>
                                     </nav>
                                 </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                    Limpieza
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">Jabón</a>
-                                        <a class="nav-link" href="404.html">Desinfectante</a>
-                                        <a class="nav-link" href="500.html">Liempieza Personal</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                    Comestibles
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
                             </nav>
                         </div>
                         <div class="sb-sidenav-menu-heading"></div>
@@ -139,10 +117,11 @@
         </asp:ContentPlaceHolder>
         <!----------------------------------------FIN CONTENEDOR-------------------------------------------------------->
           </form>
+            <br />
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                        <div class="text-muted">Copyright &copy; TiendaComics</div>
                         <div>
                             <a href="#">Privacy Policy</a>
                             &middot;
