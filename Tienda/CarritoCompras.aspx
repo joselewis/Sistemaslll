@@ -72,6 +72,7 @@
     <br />
     <asp:Label ID="lblCamposPagoNulo" runat="server" ForeColor="Red" Visible="False"></asp:Label>
 <br/>
+<br/>
 <h4>Ingresar un método de pago</h4>
 <br />
 <br />

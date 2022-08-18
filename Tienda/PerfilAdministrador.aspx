@@ -11,12 +11,9 @@
         <div class="card mb-3">
           <div class="card-body text-center">
             <img src="ImgPerfiles/Gato.jpg" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 138px;">
+              class="rounded-circle img-fluid" style="width: 185px;">
               <br />
               <br />
-            <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn btn-dark">Cambiar foto</button>
-            </div>
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@
                   <div class="row g-3">
                     <div class="col-sm-4">
                       <label for="firstName" class="form-label">Nombre</label>
-                      <asp:TextBox runat="server" type="text" class="form-control" ID="ReCajaNombre" placeholder=""></asp:TextBox>
+                      <asp:TextBox runat="server"  class="form-control" ID="ReCajaNombre" placeholder=""></asp:TextBox>
                       <div class="invalid-feedback">
                         Valid first name is required.
                       </div>
@@ -39,7 +39,7 @@
 
                     <div class="col-sm-4">
                       <label for="lastName" class="form-label">Primer apellido</label>
-                      <asp:TextBox runat="server" type="text" class="form-control" ID="ReCajaApellido1" placeholder=""></asp:TextBox>
+                      <asp:TextBox runat="server"  class="form-control" ID="ReCajaApellido1" placeholder=""></asp:TextBox>
                       <div class="invalid-feedback">
                         Valid last name is required.
                       </div>
@@ -47,7 +47,7 @@
 
                     <div class="col-sm-4">
                         <label for="lastName" class="form-label">Segundo apellido</label>
-                        <asp:TextBox runat="server" type="text" class="form-control" ID="ReCajaApellido2" placeholder=""></asp:TextBox>
+                        <asp:TextBox runat="server"  class="form-control" ID="ReCajaApellido2" placeholder=""></asp:TextBox>
                     <div class="invalid-feedback">
                         Valid last name is required.
                     </div>
@@ -56,7 +56,7 @@
                     <div class="col-4">
                       <label for="username" class="form-label">Nombre de usuario</label>
                       <div class="input-group has-validation">
-                        <asp:TextBox runat="server" type="text" class="form-control" ID="ReCajaNomUsuario" placeholder=""></asp:TextBox>
+                        <asp:TextBox runat="server" class="form-control" ID="ReCajaNomUsuario" placeholder=""></asp:TextBox>
                       <div class="invalid-feedback">
                           Your username is required.
                         </div>
@@ -73,7 +73,7 @@
 
                     <div class="col-12">
                       <label for="address" class="form-label">Télefono</label>
-                      <asp:TextBox runat="server" type="text" class="form-control" id="ReCajaTelefono" placeholder="00000000"></asp:TextBox>
+                      <asp:TextBox runat="server"  class="form-control" id="ReCajaTelefono" placeholder="00000000"></asp:TextBox>
                       <div class="invalid-feedback">
                         Please enter your shipping address.
                       </div>
@@ -84,10 +84,11 @@
                       <asp:TextBox runat="server" type="password" class="form-control" id="ReCajaContrasenna" placeholder="Password"></asp:TextBox>
                     </div>
                   </div> 
+                    <asp:Label ID="lblCamposPagoNulo" runat="server" ForeColor="Red" Visible="False"></asp:Label>
                 </div>
-            <center class="col-8">
-                <asp:button runat="server" class="w-50 btn-black btn-lg" Text="Registrarse" ID="BotonRegistrarUsuario" OnClick="BotonRegistrarUsuario_Click" />
-            </center>
+                <center class="col-8">
+                    <asp:button runat="server" class="w-50 btn-black btn-lg" Text="Registrarse" ID="BotonRegistrarUsuario" OnClick="BotonRegistrarUsuario_Click" />              
+                </center>
         </form>
   </main>
 </form>

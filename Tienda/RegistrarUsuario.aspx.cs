@@ -20,22 +20,30 @@ namespace Tienda
         #region "Método para la creación de un usuario"
         void Registrar_Usuario()
         {
-            using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+            try
             {
-                USUARIOS oUsuario = new USUARIOS();
+                using (TIENDA_PRODUCTOSEntities ContextoDB = new TIENDA_PRODUCTOSEntities())
+                {
+                    USUARIOS oUsuario = new USUARIOS();
 
-                oUsuario.NOMBRE_USUARIO = ReCajaNomUsuario.Text;
-                oUsuario.NOMBRE = ReCajaNombre.Text;
-                oUsuario.APELLIDO_1_USUARIO = ReCajaApellido1.Text;
-                oUsuario.APELLIDO_2_USUARIO = ReCajaApellido2.Text;
-                oUsuario.CORREO_ELECTRONICO = ReCajaCorreo.Text;
-                oUsuario.CONTRASENNA = ReCajaContrasenna.Text;
-                oUsuario.TELEFONO_USUARIO = ReCajaTelefono.Text;
-                oUsuario.TIPO_USUARIO = "Normal";
+                    oUsuario.NOMBRE_USUARIO = ReCajaNomUsuario.Text;
+                    oUsuario.NOMBRE = ReCajaNombre.Text;
+                    oUsuario.APELLIDO_1_USUARIO = ReCajaApellido1.Text;
+                    oUsuario.APELLIDO_2_USUARIO = ReCajaApellido2.Text;
+                    oUsuario.CORREO_ELECTRONICO = ReCajaCorreo.Text;
+                    oUsuario.CONTRASENNA = ReCajaContrasenna.Text;
+                    oUsuario.TELEFONO_USUARIO = ReCajaTelefono.Text;
+                    oUsuario.TIPO_USUARIO = "Normal";
 
-                ContextoDB.USUARIOS.Add(oUsuario);
-                ContextoDB.SaveChanges();
-                Creacion_Cuenta = 1;
+                    ContextoDB.USUARIOS.Add(oUsuario);
+                    ContextoDB.SaveChanges();
+                    Creacion_Cuenta = 1;
+                }                
+            }
+            catch(Exception ex)
+            {
+                lblCamposPagoNulo.Visible = true;
+                lblCamposPagoNulo.Text = ex.Message;
             }
         }
         #endregion
